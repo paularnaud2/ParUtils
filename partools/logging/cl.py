@@ -1,12 +1,12 @@
 from partools import file
 from partools import string
 
-from .core import log
-from .core import log_print
-from .core import get_logger
+from .main import log
+from .main import log_print
+from .main import get_logger
 
 
-def check_log(in_list, channel='default', log_match=False, max_warn=5):
+def check_log(in_list, log_match=False, max_warn=5):
     """Checks whether the current log file contains the 'in_list' elements.
     If it doesn't, a warning is thrown.
 
@@ -14,7 +14,7 @@ def check_log(in_list, channel='default', log_match=False, max_warn=5):
     """
     import warnings
 
-    logger = get_logger(channel=channel)
+    logger = get_logger()
     log('check_log...')
     txt = file.load_txt(logger.log_path, False)
     n_w = 0

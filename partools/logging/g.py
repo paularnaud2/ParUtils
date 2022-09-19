@@ -1,1 +1,1 @@
-loggers = {}
+logger = None

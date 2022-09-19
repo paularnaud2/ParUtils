@@ -1,7 +1,7 @@
 from threading import RLock
 from partools import string
 
-from .core import log
+from .main import log
 
 lock = RLock()
 sl_time_dict = {}

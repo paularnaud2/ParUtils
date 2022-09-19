@@ -7,40 +7,38 @@ from partools import file
 from partools import string
 from partools import __VERSION__
 
+from . import g
 from . import const
-from .g import loggers
 
 lock = RLock()
 
 
 class Logger:
-
     def __init__(self,
-                 name='',
-                 channel='default',
                  level=None,
-                 dir=None,
-                 format=None,
+                 log_format=None,
                  file_write=False,
+                 file_label='',
+                 dir=None,
+                 file_format=None,
                  ) -> None:
         """Initialises a logger
 
         - file_write: if True, a file is initialised in which the logger saves the logs
         """
         self.logs = []
-        self.name = name
-        self.channel = channel
         self.level = level if level else const.DEFAULT_LEVEL
-        self.dir = dir if dir else const.DEFAULT_DIR
-        self.format = format if format else const.DEFAULT_FORMAT
+        self.log_format = log_format if log_format else const.DEFAULT_LOG_FORMAT
         self.file_write = file_write
-
         if not file_write:
             return
 
-        file_base_name = datetime.now().strftime('%Y%m%d_%H%M%S')
-        if self.name:
-            file_base_name += '_' + self.name
+        self.file_label = file_label
+        self.dir = dir if dir else const.DEFAULT_DIR
+        self.file_format = file_format if file_format else const.DEFAULT_FILE_FORMAT
+        file_base_name = datetime.now().strftime(self.file_format)
+        if self.file_label:
+            file_base_name += '_' + self.file_label
         file_name = file_base_name + '.txt'
         self.log_path = p.join(self.dir, file_name)
         self.abs_log_path = p.abspath(self.log_path)
@@ -52,31 +50,19 @@ class Logger:
              f"Python version: {sys.version }\n"
              f"ParUtils version: {__VERSION__}\n")
         self.log_print(s)
-        loggers[channel] = self
+        g.logger = self
 
     def log(self, *args, level=0, c_out=True):
-        """Logs 'str_in' in the current log file (log_path)
-
-        - level: log level. Current log level set in LOG_LEVEL. Nothing will be logged if LOG_LEVEL < level
-        - format: log format
-        - c_out: console output
-        """
         if self.level < level:
             return
 
         args = [str(e) for e in args]
         msg = ' '.join(args)
-        fdate = datetime.now().strftime(self.format)
+        fdate = datetime.now().strftime(self.log_format)
         s = f"{fdate}{msg}"
         self.log_print(s, c_out=c_out)
 
     def log_print(self, *args, level=0, c_out=True, nb_tab=0, dashes=0):
-        """Prints something in the current log file (log_path)
-
-        - nb_tab: number of tab indentations
-        - c_out: console out
-        - dashes: total length of the input string extended with dashes ('-')
-        """
         if self.level < level:
             return
 
