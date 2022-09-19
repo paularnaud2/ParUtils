@@ -1,0 +1,3 @@
+DEFAULT_LEVEL = 0
+DEFAULT_DIR = 'log'
+DEFAULT_FORMAT = '%H:%M:%S - '

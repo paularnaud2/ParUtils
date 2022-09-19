@@ -1,2 +1,0 @@
-DEFAULT_DIR = 'log'
-DEFAULT_FORMAT = '%H:%M:%S -'

@@ -2,7 +2,6 @@ import os
 import os.path as p
 from shutil import rmtree
 
-from ..logger.log import log
 from .string import like
 
 
@@ -14,6 +13,7 @@ def startfile(in_path):
 
 def delete_folder(dir):
     """Deletes a folder and its content"""
+    from partools.logging.core import log
 
     if p.exists(dir):
         rmtree(dir)
@@ -23,6 +23,7 @@ def delete_folder(dir):
 def mkdirs(dir, delete=False):
     """Same as os.makedirs but with a 'delete' option which (if True) deletes
     the folder if it already exists."""
+    from partools.logging.core import log
 
     if p.exists(dir) and not delete:
         return
