@@ -16,3 +16,4 @@ extract_doc.py
 /PTconf.py
 /PTconf_perso.py
 tmp.html
+log/

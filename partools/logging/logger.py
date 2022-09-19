@@ -14,18 +14,22 @@ lock = RLock()
 
 
 class Logger:
-    def __init__(self,
-                 level=None,
-                 log_format=None,
-                 file_write=False,
-                 file_label='',
-                 dir=None,
-                 file_format=None,
-                 ) -> None:
-        """Initialises a logger
 
-        - file_write: if True, a file is initialised in which the logger saves the logs
-        """
+    def __init__(
+        self,
+        force_new_logger=False,
+        level=None,
+        log_format=None,
+        file_write=True,
+        file_label='',
+        dir=None,
+        file_format=None,
+    ) -> None:
+
+        if g.logger and g.logger.file_write and not force_new_logger:
+            self = g.logger
+            return
+
         self.logs = []
         self.level = level if level else const.DEFAULT_LEVEL
         self.log_format = log_format if log_format else const.DEFAULT_LOG_FORMAT
@@ -81,8 +85,6 @@ class Logger:
             self._write_log(s)
 
     def log_input(self, str_in):
-        """Same as input but traced in the log file"""
-
         with lock:
             self._write_log(str_in)
             command = input(str_in)

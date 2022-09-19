@@ -17,7 +17,7 @@ def delete_folder(dir):
 
     if p.exists(dir):
         rmtree(dir)
-        log(f"Folder {dir} deleted")
+        log(f"Folder '{dir}' deleted")
 
 
 def mkdirs(dir, delete=False):
@@ -30,7 +30,7 @@ def mkdirs(dir, delete=False):
     if p.exists(dir) and delete:
         delete_folder(dir)
     os.makedirs(dir)
-    log(f"Folder {dir} created")
+    log(f"Folder '{dir}' created")
 
 
 def abspath(path):
