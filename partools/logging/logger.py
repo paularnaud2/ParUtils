@@ -17,11 +17,11 @@ class Logger:
 
     def __init__(
         self,
+        file_label='',
         force_new_logger=False,
         level=None,
         log_format=None,
         file_write=True,
-        file_label='',
         dir=None,
         file_format=None,
     ) -> None:
