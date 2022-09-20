@@ -1,7 +1,6 @@
 import os.path as p
 
 from parutils import file
-from parutils.dup import del_dup_list
 from parutils.logging import log
 from parutils.logging import log_print
 
@@ -11,7 +10,6 @@ OUT_DIR = 'out'
 def file_match(in1, in2, del_dup=False, err=True, out_path=''):
     """Compares two files and outputs the diff if the files don't match.
     Note that the files are sorted before comparison.
-    (more generic than run_dq but doesn't work for big files)
 
     - del_dup: if true, duplicates are deleted before comparison
     - err: if True, an exception is raised when the files don't match
@@ -54,3 +52,48 @@ def diff_list(list1, list2, out_path):
     out = del_dup_list(out1 + out2)
     file.save_list(out, out_path)
     log(f"Comparison result available here: {out_path}")
+
+
+def find_dup_list(in_list):
+    """Returns a list of the duplicates in in_list"""
+
+    if not in_list:
+        return []
+
+    in_sorted = sorted(in_list)
+    dup_list = []
+    old_elt = in_sorted[0]
+    for elt in in_sorted[1:]:
+        if elt == old_elt:
+            dup_list.append(elt)
+        else:
+            old_elt = elt
+
+    if dup_list:
+        dup_list = del_dup_list(dup_list)
+
+    return dup_list
+
+
+def del_dup_list(in_list):
+    """Returns in_list sorted and without duplicates"""
+
+    if not in_list:
+        return []
+
+    # If in_list elements are hashable
+    if isinstance(in_list[0], str):
+        out_list = list(set(in_list))
+        out_list.sort()
+        return out_list
+
+    # If not
+    in_sorted = sorted(in_list)
+    out_list = [in_sorted[0]]
+    old_elt = in_sorted[0]
+    for elt in in_sorted[1:]:
+        if elt > old_elt:
+            out_list.append(elt)
+            old_elt = elt
+
+    return out_list

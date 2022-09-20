@@ -5,6 +5,7 @@ from .logger import Logger
 
 
 def get_logger() -> Logger:
+
     if g.logger is None:
         logger = Logger(file_write=False)
         g.logger = logger

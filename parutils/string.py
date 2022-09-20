@@ -1,7 +1,4 @@
 
-VAR_DEL = '@@'
-
-
 def like(in_str, like_string, case_sensitive=True):
     """Behaves as the LIKE of Oracle SQL (you can match strings with wildcard
     character '*'). Returns the match object that you can access with the group
@@ -161,16 +158,3 @@ def big_number(int_in):
         if counter % 3 == 0 and position != 0:
             out = " " + out
     return (out)
-
-
-def replace_from_dict(str_in, dict_in):
-    """Replaces the variables (delimited by '@@') in 'str_in' with the values
-    of 'dict_in'.
-
-    Example:
-    - replace_from_dict('Hello @@VAR@@', {'VAR': 'world'}) returns 'Hello world'
-    """
-
-    for key in dict_in:
-        str_in = str_in.replace(VAR_DEL + key + VAR_DEL, str(dict_in[key]))
-    return str_in

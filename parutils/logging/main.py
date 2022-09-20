@@ -30,12 +30,12 @@ def log_input(str_in):
 
 def log_array(array, nb_tab=0):
     for elt in array:
-        log_print(elt, nb_tab)
+        log_print(elt, nb_tab=nb_tab)
 
 
 def log_dict(dict, nb_tab=0):
     for key in dict:
-        log_print(f'{key}: {dict[key]}', nb_tab)
+        log_print(f'{key}: {dict[key]}', nb_tab=nb_tab)
 
 
 def log_example(list_in, what="duplicates", n_print=5):

@@ -21,8 +21,9 @@ def delete_folder(dir):
 
 
 def mkdirs(dir, delete=False):
-    """Same as os.makedirs but with a 'delete' option which (if True) deletes
-    the folder if it already exists."""
+    """Same as os.makedirs but
+    - Input can also be a path
+    - With a 'delete' option which (if True) deletes the folder if it already exists."""
     from parutils.logging.main import log
 
     if p.exists(dir) and not delete:
@@ -130,6 +131,7 @@ def load_txt(in_path, list_out=True):
 def save_list(in_list, out_path, att='w'):
     """Saves a list in a file, each element representing a line"""
 
+    mkdirs(p.dirname(out_path))
     with open(out_path, 'w', encoding='utf-8') as out_file:
         for i, elt in enumerate(in_list):
             s = str(elt).strip("\n")

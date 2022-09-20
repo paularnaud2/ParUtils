@@ -1,5 +1,6 @@
-from .logger.log import log
-from .logger.log import log_print
+from . import file
+from .logging import log
+from .logging import log_print
 
 SEPARATOR = ';'
 
@@ -44,7 +45,9 @@ def save_csv(array_in, out_path, mode='w'):
 
     - mode: mode for the open methode.
     """
+    import os.path as p
 
+    file.mkdirs(p.dirname(out_path))
     with open(out_path, mode, encoding='utf-8') as out_file:
         for row in array_in:
             write_csv_line(row, out_file)

@@ -3,7 +3,7 @@ from parutils import string
 
 from .main import log
 from .main import log_print
-from .main import get_logger
+from .core import get_logger
 
 
 def check_log(in_list, log_match=False, max_warn=5):
