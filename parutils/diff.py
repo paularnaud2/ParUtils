@@ -1,9 +1,9 @@
 import os.path as p
 
-from partools import file
-from partools.dup import del_dup_list
-from partools.logger.log import log
-from partools.logger.log import log_print
+from parutils import file
+from parutils.dup import del_dup_list
+from parutils.logging import log
+from parutils.logging import log_print
 
 OUT_DIR = 'out'
 

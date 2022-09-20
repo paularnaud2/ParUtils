@@ -1,4 +1,5 @@
-import partools.utils as u
+from .string import like
+from .logging import log
 
 
 def ttry(f, e_ref, *args, **kwargs):
@@ -7,8 +8,8 @@ def ttry(f, e_ref, *args, **kwargs):
     try:
         f(*args, **kwargs)
     except Exception as e:
-        assert u.like(str(e), e_ref)
-        u.log(f"[ttry] Exception caught match expected ('{e_ref}')")
+        assert like(str(e), e_ref)
+        log(f"[ttry] Exception caught match expected ('{e_ref}')")
         exception_occured = True
 
     assert exception_occured

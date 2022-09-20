@@ -1,9 +1,9 @@
 # This script shows you simple examples of use for the log and step_log functions
 import time
-from partools.logging import Logger
-from partools.logging import log
-from partools.logging import log_print
-from partools.logging import step_log
+from parutils.logging import Logger
+from parutils.logging import log
+from parutils.logging import log_print
+from parutils.logging import step_log
 
 
 log("This won't be logged in a file")

@@ -3,9 +3,9 @@ import os.path as p
 from threading import RLock
 from datetime import datetime
 
-from partools import file
-from partools import string
-from partools import __VERSION__
+from parutils import file
+from parutils import string
+from parutils import __VERSION__
 
 from . import g
 from . import const

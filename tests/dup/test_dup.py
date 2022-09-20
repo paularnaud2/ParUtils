@@ -1,10 +1,10 @@
 import imp
 from operator import imod
-from partools import csv
-from partools import file
-import partools.dup as dup
-import partools.diff as diff
-from partools.logger import log
+from parutils import csv
+from parutils import file
+import parutils.dup as dup
+import parutils.diff as diff
+from parutils.logger import log
 
 import tests.dup.const as const
 import tests.dup.check_log as cl

@@ -1,5 +1,5 @@
-from partools import file
-from partools import string
+from parutils import file
+from parutils import string
 
 from .main import log
 from .main import log_print

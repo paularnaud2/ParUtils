@@ -3,8 +3,8 @@ The dup script allows you to find and/or remove duplicates as well as sort and
 shuffle a csv file or a list.
 """
 
-from partools import dup
-from partools.quickstart import files_dir
+from parutils import dup
+from parutils.quickstart import files_dir
 
 # Working with files-------------------------------------------------
 in_path = f'{files_dir}in.csv'

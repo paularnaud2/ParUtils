@@ -1,5 +1,5 @@
 from threading import RLock
-from partools import string
+from parutils import string
 
 from .main import log
 

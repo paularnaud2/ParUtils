@@ -1,7 +1,7 @@
-from partools import csv
-from partools import file
-from partools import string as st
-from partools.logger.log import log
+from parutils import csv
+from parutils import file
+from parutils import string as st
+from parutils.logging import log
 
 OUT_DIR = 'out'
 
@@ -121,7 +121,7 @@ def shuffle_file(in_path, out_path, open_out=False):
 
 
 def finish_find_dup(dup_list, out_path, open_out):
-    from partools.logger.log import log_example
+    from parutils.logging import log_example
 
     n = len(dup_list)
     if n == 0:

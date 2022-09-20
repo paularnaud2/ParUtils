@@ -1,4 +1,4 @@
-import partools.utils as u
+import parutils.utils as u
 import tests.utils.check_log as cl
 
 

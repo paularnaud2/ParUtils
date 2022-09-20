@@ -13,7 +13,7 @@ def startfile(in_path):
 
 def delete_folder(dir):
     """Deletes a folder and its content"""
-    from partools.logging.main import log
+    from parutils.logging.main import log
 
     if p.exists(dir):
         rmtree(dir)
@@ -23,7 +23,7 @@ def delete_folder(dir):
 def mkdirs(dir, delete=False):
     """Same as os.makedirs but with a 'delete' option which (if True) deletes
     the folder if it already exists."""
-    from partools.logging.main import log
+    from parutils.logging.main import log
 
     if p.exists(dir) and not delete:
         return
