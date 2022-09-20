@@ -1,5 +1,4 @@
-from parutils import file
-from parutils import string
+import parutils as u
 
 from .main import log
 from .main import log_print
@@ -16,10 +15,13 @@ def check_log(in_list, log_match=False, max_warn=5):
 
     logger = get_logger()
     log('check_log...')
-    txt = file.load_txt(logger.log_path, False)
+    if not hasattr(logger, 'log_path'):
+        s = 'No log file has been initialised. Initialise a log file by instanciating a logger object with Logger().'
+        raise Exception(s)
+    txt = u.load_txt(logger.log_path, False)
     n_w = 0
     for elt in in_list:
-        m = string.like(txt, elt)
+        m = u.like(txt, elt)
         if not m:
             n_w += 1
             s = f"Expression '{elt}' couldn't be found in log file {logger.log_path}"

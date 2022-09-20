@@ -1,14 +1,14 @@
 import parutils as u
 
-FILES_DIR = 'tests/dup/files/'
+FILES_DIR = 'tests/dq/files/'
 OUT_DIR = 'out/tests/'
 DUP_IN = FILES_DIR + 'dup_in.csv'
 DUP_OUT = OUT_DIR + 'out_dup.csv'
 DUP_OUT_REF = FILES_DIR + 'dup_out_ref.csv'
 
 
-def test_tools():
-    u.Logger('test_tools', True)
+def test_dq():
+    u.Logger('TEST_DQ', True)
     u.file.mkdirs(OUT_DIR, True)
     u.log_print()
 
@@ -20,4 +20,4 @@ def test_tools():
 
 
 if __name__ == '__main__':
-    test_tools()
+    test_dq()

@@ -1,12 +1,9 @@
 import sys
 import os.path as p
+import parutils as u
 from time import time
 from threading import RLock
 from datetime import datetime
-
-from parutils import file
-from parutils import string
-from parutils import __VERSION__
 
 from . import g
 from . import const
@@ -47,13 +44,13 @@ class Logger:
         file_name = file_base_name + '.txt'
         self.log_path = p.join(self.dir, file_name)
         self.abs_log_path = p.abspath(self.log_path)
-        file.mkdirs(self.dir)
+        u.mkdirs(self.dir)
         with open(self.log_path, 'w', encoding='utf-8') as in_file:
             in_file.write('')
         s = (f"Log file initialised ({self.abs_log_path})\n"
              f"Python interpreter path: {sys.executable}\n"
              f"Python version: {sys.version }\n"
-             f"ParUtils version: {__VERSION__}\n")
+             f"ParUtils version: {u.__VERSION__}\n")
         self.log_print(s)
         g.logger = self
 
@@ -78,7 +75,7 @@ class Logger:
                 s = '\t' + s
 
         if dashes > 0:
-            s = string.extend_str(s, '-', dashes)
+            s = u.extend_str(s, '-', dashes)
 
         with lock:
             if c_out:

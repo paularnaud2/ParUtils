@@ -1,4 +1,3 @@
-
 def like(in_str, like_string, case_sensitive=True):
     """Behaves as the LIKE of Oracle SQL (you can match strings with wildcard
     character '*'). Returns the match object that you can access with the group
