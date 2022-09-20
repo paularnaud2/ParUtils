@@ -1,5 +1,6 @@
 import sys
 import os.path as p
+from time import time
 from threading import RLock
 from datetime import datetime
 
@@ -14,7 +15,6 @@ lock = RLock()
 
 
 class Logger:
-
     def __init__(
         self,
         file_label='',
@@ -34,6 +34,7 @@ class Logger:
         self.level = level if level else const.DEFAULT_LEVEL
         self.log_format = log_format if log_format else const.DEFAULT_LOG_FORMAT
         self.file_write = file_write
+        self.start_time = time()
         if not file_write:
             return
 
@@ -93,7 +94,6 @@ class Logger:
         return command
 
     def _write_log(self, str_in):
-
         s = str(str_in)
         self.logs.append(s)
         if not self.file_write:
