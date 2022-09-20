@@ -26,6 +26,9 @@ def mkdirs(dir, delete=False):
     - With a 'delete' option which (if True) deletes the folder if it already exists."""
     from parutils.logging.main import log
 
+    if not dir:
+        return
+
     if p.exists(dir) and not delete:
         return
     if p.exists(dir) and delete:
