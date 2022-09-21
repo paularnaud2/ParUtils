@@ -11,7 +11,6 @@ def extract_doc(in_dirs, out_path):
         extract_doc_from_dir(in_dir, out)
 
     u.save_list(out, out_path)
-    u.startfile(out_path)
 
 
 def extract_doc_from_dir(in_dir, out):

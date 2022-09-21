@@ -1,17 +1,15 @@
 import parutils as u
+from conftest import TESTS_OUT_DIR
 
 FILES_DIR = 'tests/dq/files/'
-OUT_DIR = 'out/tests/'
+OUT_DIR = TESTS_OUT_DIR
 DUP_IN = FILES_DIR + 'dup_in.csv'
-DUP_OUT = OUT_DIR + 'out_dup.csv'
+DUP_OUT = OUT_DIR + '/out_dup.csv'
 DUP_OUT_REF = FILES_DIR + 'dup_out_ref.csv'
 
 
 def test_dq():
     u.Logger('TEST_DQ', True)
-    u.file.mkdirs(OUT_DIR, True)
-    u.log_print()
-
     u.log_print("Test toolDup - find_dup_list", dashes=100)
     list_in = u.load_csv(DUP_IN)
     dup_list = u.find_dup_list(list_in)

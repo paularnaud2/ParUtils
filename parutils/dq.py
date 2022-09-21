@@ -33,7 +33,6 @@ def file_match(in1, in2, del_dup=False, err=True, out_path=''):
     if not res:
         diff_list(l1, l2, out_path)
         if err:
-            u.startfile(out_path)
             assert res is True
 
 

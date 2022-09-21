@@ -5,12 +5,6 @@ from shutil import rmtree
 from .string import like
 
 
-def startfile(in_path):
-    """Same as os.startfile but with absolute path (more robust)"""
-
-    os.startfile(p.abspath(in_path))
-
-
 def delete_folder(dir):
     """Deletes a folder and its content"""
     from parutils.logging.main import log
@@ -35,31 +29,6 @@ def mkdirs(dir, delete=False):
         delete_folder(dir)
     os.makedirs(dir)
     log(f"Folder '{dir}' created")
-
-
-def abspath(path):
-    """Same as os.path.abspath but with '/' instead of '\'"""
-
-    out = p.abspath(path).replace('\\', '/')
-    return out
-
-
-def append_file(in_path, out_path, remove_header=False):
-    """Appends the 'in_path' file to the 'out_path' file.
-
-    - remove_header: if True, the header of the 'in_path' file is removed
-    - before appending
-    """
-
-    with open(in_path, 'r', encoding='utf-8') as in_file:
-        with open(out_path, 'a', encoding='utf-8') as out_file:
-            i = 0
-            for line in in_file:
-                i += 1
-                if remove_header and i == 1:
-                    pass
-                else:
-                    out_file.write(line)
 
 
 def list_files(in_dir,

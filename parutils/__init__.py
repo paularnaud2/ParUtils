@@ -11,11 +11,8 @@ from .string import gen_random_string
 from .string import get_duration_string
 
 from .file import mkdirs
-from .file import abspath
 from .file import load_txt
 from .file import save_list
-from .file import startfile
-from .file import append_file
 from .file import count_lines
 from .file import delete_folder
 from .file import list_files
