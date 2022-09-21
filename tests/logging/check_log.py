@@ -3,8 +3,8 @@ N_W = 6
 CL = [
     "Log file initialised (*)",
     "Python interpreter path: ",
-    "Python version: 3.10.7",
-    "ParUtils version: 1.0.0",
+    "Python version: *",
+    "ParUtils version: *",
     "This will be logged in a file",
 ]
 
@@ -16,8 +16,8 @@ CL_0 = [
     "Expression 'This won't be logged in a file' couldn't be found in log file",
     "Expression 'Log file initialised (*)' was found in log file",
     "Expression 'Python interpreter path: ' was found in log file",
-    "Expression 'Python version: 3.10.7' was found in log file",
-    "Expression 'ParUtils version: 1.0.0' was found in log file",
+    "Expression 'Python version: *' was found in log file",
+    "Expression 'ParUtils version: *' was found in log file",
     "Expression 'This will be logged in a file' was found in log file",
 ]
 
