@@ -23,9 +23,13 @@ def log_print(*args, level=0, c_out=True, nb_tab=0, dashes=0):
     """
 
 
-@logger_methode
 def log_input(str_in):
     """Same as input but traced in the log file"""
+
+    log_print(str_in, c_out=False)
+    command = input(str_in + '\n')
+    log_print(command, c_out=False)
+    return command
 
 
 def log_array(array, nb_tab=0):

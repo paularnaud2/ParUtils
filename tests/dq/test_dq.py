@@ -15,6 +15,7 @@ def test_dq():
     u.log_print("Test toolDup - find_dup_list", dashes=100)
     list_in = u.load_csv(DUP_IN)
     dup_list = u.find_dup_list(list_in)
+    u.log_example(dup_list)
     u.save_csv(dup_list, DUP_OUT)
     u.file_match(DUP_OUT, DUP_OUT_REF)
 

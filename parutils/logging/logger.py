@@ -54,6 +54,10 @@ class Logger:
         self.log_print(s)
         g.logger = self
 
+    @staticmethod
+    def close():
+        g.logger = None
+
     def log(self, *args, level=0, c_out=True):
         if self.level < level:
             return
@@ -81,14 +85,6 @@ class Logger:
             if c_out:
                 print(s)
             self._write_log(s)
-
-    def log_input(self, str_in):
-        with lock:
-            self._write_log(str_in)
-            command = input(str_in)
-            self._write_log(str_in)
-
-        return command
 
     def _write_log(self, str_in):
         s = str(str_in)
