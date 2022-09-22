@@ -7,7 +7,7 @@ TESTS_OUT_DIR = 'out/tests'
 
 
 @pytest.fixture(scope="session", autouse=True)
-def before_all():
+def test_init():
     const.DEFAULT_DIR = TESTS_LOG_DIR
     u.dq.OUT_DIR = TESTS_OUT_DIR
     u.mkdirs(TESTS_LOG_DIR, True)

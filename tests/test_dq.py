@@ -1,8 +1,8 @@
-import conftest
 import parutils as u
+from tests import test_init
 
 FILES_DIR = 'tests/files/'
-OUT_DIR = conftest.TESTS_OUT_DIR
+OUT_DIR = test_init.TESTS_OUT_DIR
 DUP_IN = FILES_DIR + 'dup_in.csv'
 DUP_OUT = OUT_DIR + '/out_dup.csv'
 DUP_OUT_REF = FILES_DIR + 'dup_out_ref.csv'
@@ -30,7 +30,7 @@ def test_dq():
 
 
 if __name__ == '__main__':
-    u.logging.const.DEFAULT_DIR = conftest.TESTS_LOG_DIR
-    u.dq.OUT_DIR = conftest.TESTS_OUT_DIR
+    u.logging.const.DEFAULT_DIR = test_init.TESTS_LOG_DIR
+    u.dq.OUT_DIR = test_init.TESTS_OUT_DIR
 
     test_dq()

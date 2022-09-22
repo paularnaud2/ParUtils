@@ -65,7 +65,7 @@ def test_string():
 
 
 if __name__ == '__main__':
-    import conftest
-    u.logging.const.DEFAULT_DIR = conftest.TESTS_LOG_DIR
+    from tests import test_init
+    u.logging.const.DEFAULT_DIR = test_init.TESTS_LOG_DIR
 
     test_string()
