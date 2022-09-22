@@ -16,9 +16,6 @@ def file_match(in1, in2, del_dup=False, err=True, out_path=''):
     - out_path: specifies an output path for file comparison different from default
     """
 
-    if not out_path:
-        out_path = p.join(OUT_DIR, 'file_match_out.csv')
-
     s = f"Comparing files '{in1}' and '{in2}'..."
     u.log(s)
     l1, l2 = u.load_txt(in1), u.load_txt(in2)
@@ -33,12 +30,13 @@ def file_match(in1, in2, del_dup=False, err=True, out_path=''):
     if not res:
         diff_list(l1, l2, out_path)
         if err:
-            assert res is True
+            raise Exception(s)
 
 
-def diff_list(list1, list2, out_path):
+def diff_list(list1, list2, out_path=''):
 
     if not out_path:
+        u.mkdirs(OUT_DIR)
         out_path = p.join(OUT_DIR, 'file_match_out.csv')
 
     out1 = [e for e in list1 if e not in list2]

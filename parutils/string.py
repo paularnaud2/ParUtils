@@ -1,3 +1,7 @@
+E_WRONG_TYPE_LIST = "like_list must be of type list"
+E_WRONG_TYPE_DICT = "like_dict must be of type dict"
+
+
 def like(in_str, like_string, case_sensitive=True):
     """Behaves as the LIKE of Oracle SQL (you can match strings with wildcard
     character '*'). Returns the match object that you can access with the group
@@ -40,7 +44,7 @@ def like_list(in_str, like_list, case_sensitive=True):
     See the like function description for more details."""
 
     if not isinstance(like_list, list):
-        raise Exception('like_list must be of type list')
+        raise Exception(E_WRONG_TYPE_LIST)
 
     for elt in like_list:
         if like(in_str, elt, case_sensitive):
@@ -54,7 +58,7 @@ def like_dict(in_str, like_dict, case_sensitive=True, skey=''):
     See the like_list function description for more details."""
 
     if not isinstance(like_dict, dict):
-        raise Exception('like_dict must be of type dict')
+        raise Exception(E_WRONG_TYPE_DICT)
 
     for key in like_dict:
         item = like_dict[key] if not skey else like_dict[key][skey]

@@ -1,3 +1,4 @@
+from re import T
 import parutils as u
 from tests.string.check_log import CL
 
@@ -9,9 +10,9 @@ def get_duration():
     u.log(dstr)
     assert dstr == "350 ms"
 
-    dstr = u.get_duration_string(0, end_time=5.369)
-    u.log(dstr)
-    assert dstr == "5.3 s"
+    (dms, dstr) = u.get_duration_string(0, end_time=5.369, return_dms=True)
+    u.log(dstr, dms)
+    assert (dstr, dms) == ("5.3 s", 5369)
 
     dstr = u.get_duration_string(0, end_time=150)
     u.log(dstr)
@@ -25,6 +26,8 @@ def like():
 
     s = '2 test ok?'
     assert u.like(s, 'test')
+    assert u.like(s, 'TEST', case_sensitive=False)
+    assert u.like(s, 'TEST') is False
     u.log("like simple ok")
 
     m = u.like(s, '2 * ok?')
@@ -32,25 +35,37 @@ def like():
     u.log("like m ok")
 
     lst = ['1', 'test']
+    e_ref = u.string.E_WRONG_TYPE_LIST
+    u.ttry(u.like_list, e_ref, s, 'test')
     assert u.like_list(s, lst)
+    assert u.like_list('TEST', lst) is False
     u.log("like_list ok")
 
-    dct = {'1': 'a', '2': 'test'}
+    dct = {'1': ['a', 'b'], '2': 'test'}
+    e_ref = u.string.E_WRONG_TYPE_DICT
+    u.ttry(u.like_dict, e_ref, s, 'test')
     assert u.like_dict(s, dct) == '2'
+    assert u.like_dict('b', dct) == '1'
+    assert u.like_dict('TEST', dct) is False
     u.log("like_dict ok")
 
+    assert u.hash512('TEST', 4) == '7bfa'
+    assert len(u.gen_random_string(10)) == 10
     u.log_print()
 
 
 def test_string():
-    u.Logger('TEST_STRING', True)
 
+    logger = u.Logger('TEST_STRING', True)
+    assert u.big_number(1000) == '1 000'
     get_duration()
     like()
     u.check_log(CL)
-
-    u.log_print()
+    logger.close()
 
 
 if __name__ == '__main__':
+    import conftest
+    u.logging.const.DEFAULT_DIR = conftest.TESTS_LOG_DIR
+
     test_string()

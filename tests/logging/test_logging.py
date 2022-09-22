@@ -52,6 +52,8 @@ def test_logging(monkeypatch):
     u.check_log(cl.CL, log_matches=True)
     u.check_log(cl.CL_END)
 
+    u.get_logger().close()
+
 
 def mock_input(txt):
     out = "user command"
@@ -60,5 +62,8 @@ def mock_input(txt):
 
 
 if __name__ == '__main__':
+    import conftest
     from _pytest.monkeypatch import MonkeyPatch
+    u.logging.const.DEFAULT_DIR = conftest.TESTS_LOG_DIR
+
     test_logging(MonkeyPatch())

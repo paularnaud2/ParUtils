@@ -1,18 +1,16 @@
 from . import file
-from .logging import log
-from .logging import log_print
 
 SEPARATOR = ';'
+E_WRONG_TYPE_LIST = "List elements must be of type list (if you want to save a list of strings, please use the save_list function)"
 
 
 def get_csv_fields_dict(in_path):
     """Returns a dictionary whose keys are the csv fields of the 'in_path' file
     and elements are the columns index.
     """
-    from . import header
 
     fields = {}
-    line_list = header.get_header(in_path, True)
+    line_list = get_header(in_path, True)
     for i, elt in enumerate(line_list):
         fields[elt] = i
 
@@ -56,11 +54,11 @@ def save_csv(array_in, out_path, mode='w'):
 def write_csv_line(row, out_file):
     """Writes a line to a csv file
 
-    - row: can be either a list of the csv fields or a csv string
+    - row: has to be a list
     """
 
-    if isinstance(row, str):
-        line_out = row
+    if not isinstance(row, list):
+        raise Exception(E_WRONG_TYPE_LIST)
     else:
         line_out = SEPARATOR.join(row)
     line_out += '\n'
@@ -81,8 +79,6 @@ def get_header(in_path, csv=False):
 
     - csv: if True, the returned header is a list containing each csv field
     """
-    from .csv import csv_to_list
-
     with open(in_path, 'r', encoding='utf-8') as in_file:
         header = in_file.readline().strip('\n')
 
