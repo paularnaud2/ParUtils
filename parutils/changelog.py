@@ -1,1 +1,1 @@
-__VERSION__ = '1.0.1'  # Init
+__VERSION__ = '1.0.0'  # Init
