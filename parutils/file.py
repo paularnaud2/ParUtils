@@ -2,7 +2,7 @@ import os
 import os.path as p
 from shutil import rmtree
 
-from .string import like
+from .string import like_list
 
 
 def delete_folder(dir):
@@ -32,13 +32,14 @@ def mkdirs(dir, delete=False):
 
 
 def list_files(in_dir,
-               incl_root=True,
                walk=False,
+               file_names_only=False,
+               abspath=False,
                only_list=[],
                ignore_list=[]):
     """Lists the files of the 'in_dir' directory
 
-    - incl_root: if True, the root is included in each paths (absolute paths)
+    - incl_root: if True, the root directory is included in each paths
     - walk: if True, the files of all the subdirectories are listed as well
     - only_list: list of wanted patterns. e.g. ['*.py'] (only these patterns will be output)
     - ignore_list: list of unwanted patterns. e.g. ['*.pyc'] (these patterns won't be output)
@@ -49,34 +50,19 @@ def list_files(in_dir,
 
     out = []
     for root, dir, files in os.walk(in_dir):
-        root = root.strip('/')
         for file in files:
-            r = root.replace('\\', '/') + '/' if incl_root else ''
-            cur_path = f'{r}{file}'
-            if only(cur_path, only_list) and not ignore(cur_path, ignore_list):
+            cur_path = file if file_names_only else p.join(root, file)
+            cur_path = p.abspath(cur_path) if abspath else cur_path
+            cur_path = cur_path.replace('\\', '/')
+            only = not only_list or like_list(file, only_list, case_sensitive=False)
+            ignore = not like_list(file, ignore_list, case_sensitive=False)
+            if only and ignore:
                 out.append(cur_path)
         if not walk:
             break
 
     out.sort()
     return out
-
-
-def only(path, only_list):
-    if not only_list:
-        return True
-
-    for elt in only_list:
-        if like(path, f'{elt}'):
-            return True
-    return False
-
-
-def ignore(path, ignore_list):
-    for elt in ignore_list:
-        if like(path, f'{elt}'):
-            return True
-    return False
 
 
 def load_txt(in_path, list_out=True):
