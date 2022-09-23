@@ -1,4 +1,4 @@
-__VERSION__ = '1.0.0'  # Init
+from .changelog import __VERSION__
 
 from .string import like
 from .string import like_list

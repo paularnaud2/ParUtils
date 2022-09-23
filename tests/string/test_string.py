@@ -65,7 +65,7 @@ def test_string():
 
 
 if __name__ == '__main__':
-    from tests import test_init
-    u.logging.const.DEFAULT_DIR = test_init.TESTS_LOG_DIR
+    from tests import test_0
+    u.logging.const.DEFAULT_DIR = test_0.TESTS_LOG_DIR
 
     test_string()

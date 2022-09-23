@@ -62,8 +62,8 @@ def mock_input(txt):
 
 
 if __name__ == '__main__':
-    from tests import test_init
+    from tests import test_0
     from _pytest.monkeypatch import MonkeyPatch
-    u.logging.const.DEFAULT_DIR = test_init.TESTS_LOG_DIR
+    u.logging.const.DEFAULT_DIR = test_0.TESTS_LOG_DIR
 
     test_logging(MonkeyPatch())
