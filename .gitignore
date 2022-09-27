@@ -11,7 +11,6 @@ format.py
 /test.py
 build/
 dist/
-extract_doc.py
 *.spec
 /PTconf.py
 /PTconf_perso.py
