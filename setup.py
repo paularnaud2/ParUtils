@@ -1,7 +1,7 @@
 from setuptools import setup
 from setuptools import find_packages
 
+pkg_list = find_packages(exclude=['tests'])
 setup(
-    packages=find_packages(),
-    include_package_data=True,
+    packages=pkg_list,
 )
