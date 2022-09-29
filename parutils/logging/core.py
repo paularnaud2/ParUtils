@@ -6,12 +6,18 @@ from .logger import Logger
 
 def get_logger() -> Logger:
 
-    if g.logger is None:
+    if g.cur_logger is None:
         logger = Logger(file_write=False)
-        g.logger = logger
+        g.cur_logger = logger
     else:
-        logger = g.logger
+        logger = g.cur_logger
     return logger
+
+
+def close_logger():
+
+    if g.cur_logger:
+        g.cur_logger.close()
 
 
 def logger_methode(func):

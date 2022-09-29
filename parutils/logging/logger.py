@@ -23,8 +23,8 @@ class Logger:
         file_format=None,
     ) -> None:
 
-        if g.logger and g.logger.file_write and not force_new_logger:
-            self = g.logger
+        if g.cur_logger and g.cur_logger.file_write and not force_new_logger:
+            self = g.cur_logger
             return
 
         self.logs = []
@@ -52,11 +52,11 @@ class Logger:
              f"Python version: {sys.version }\n"
              f"ParUtils version: {u.__VERSION__}\n")
         self.log_print(s)
-        g.logger = self
+        g.cur_logger = self
 
     @staticmethod
     def close():
-        g.logger = None
+        g.cur_logger = None
 
     def log(self, *args, level=0, c_out=True):
         if self.level < level:

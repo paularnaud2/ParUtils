@@ -1,1 +1,1 @@
-logger = None
+cur_logger = None

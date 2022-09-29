@@ -36,6 +36,7 @@ from .logging import log_array
 from .logging import log_input
 from .logging import check_log
 from .logging import get_logger
+from .logging import close_logger
 from .logging import log_example
 from .logging import init_sl_timer
 

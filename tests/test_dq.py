@@ -12,7 +12,7 @@ IN_2 = FILES_DIR + 'in2.csv'
 
 def test_dq():
 
-    logger = u.Logger('TEST_DQ', True)
+    u.Logger('TEST_DQ', True)
     u.log_print("Test toolDup - find_dup_list", dashes=100)
     list_in = u.load_csv(DUP_IN)
     dup_list = u.find_dup_list(list_in)
@@ -26,7 +26,7 @@ def test_dq():
 
     assert u.find_dup_list([]) == []
     assert u.del_dup_list([]) == []
-    logger.close()
+    u.close_logger()
 
 
 if __name__ == '__main__':

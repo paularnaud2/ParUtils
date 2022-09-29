@@ -12,3 +12,4 @@ from . import const
 from .cl import check_log
 from .logger import Logger
 from .core import get_logger
+from .core import close_logger
