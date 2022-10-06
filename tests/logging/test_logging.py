@@ -1,5 +1,3 @@
-# This script shows you simple examples of use for the log and step_log functions
-import time
 import pytest
 import parutils as u
 from tests.logging import check_log as cl
@@ -62,8 +60,8 @@ def mock_input(txt):
 
 
 if __name__ == '__main__':
-    from tests import test_0
+    from conftest import init
     from _pytest.monkeypatch import MonkeyPatch
-    u.logging.const.DEFAULT_DIR = test_0.TESTS_LOG_DIR
 
+    init()
     test_logging(MonkeyPatch())

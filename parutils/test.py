@@ -8,8 +8,16 @@ def ttry(f, e_ref, *args, **kwargs):
     try:
         f(*args, **kwargs)
     except Exception as e:
-        assert like(str(e), e_ref)
-        log(f"[ttry] Exception caught match expected ('{e_ref}')")
         exception_occured = True
+        if like(str(e), e_ref):
+            log(f"[ttry] Exception caught match expected ('{e_ref}')")
+        else:
+            s = f"[ttry] Exception caught ('{str(e)}') don't match expected ('{e_ref}')"
+            log(s)
+            raise Exception(s)
 
-    assert exception_occured
+    if not exception_occured:
+        s = "[ttry] No exception was caught"
+        log(s)
+        raise Exception(s)
+
