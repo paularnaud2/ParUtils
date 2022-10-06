@@ -5,7 +5,7 @@ from tests.logging import check_log as cl
 
 def test_logging(monkeypatch):
 
-    u.get_logger().close()
+    u.close_logger()
     u.log("This won't be logged in a file\n")
     e_ref = "No log file has been initialised"
     u.ttry(u.check_log, e_ref, cl.CL)
@@ -19,7 +19,7 @@ def test_logging(monkeypatch):
     with pytest.warns(UserWarning):
         u.check_log(cl.CL_NOT, cl.CL, max_warn=10)
         u.check_log(cl.CL_1)
-    u.get_logger().close()
+    u.close_logger()
 
     u.Logger('TEST_LOGGING_2')
     u.log("This will be logged", "in a file\n")
@@ -50,7 +50,7 @@ def test_logging(monkeypatch):
     u.check_log(cl.CL, log_matches=True)
     u.check_log(cl.CL_END)
 
-    u.get_logger().close()
+    u.close_logger()
 
 
 def mock_input(txt):

@@ -56,12 +56,12 @@ def like():
 
 def test_string():
 
-    logger = u.Logger('TEST_STRING', True)
+    u.Logger('TEST_STRING', True)
     assert u.big_number(1000) == '1 000'
     get_duration()
     like()
     u.check_log(CL)
-    logger.close()
+    u.close_logger()
 
 
 if __name__ == '__main__':
