@@ -1,3 +1,4 @@
+import os
 import sys
 import os.path as p
 import parutils as u
@@ -48,6 +49,7 @@ class Logger:
         with open(self.log_path, 'w', encoding='utf-8') as in_file:
             in_file.write('')
         s = (f"Log file initialised ({self.abs_log_path})\n"
+             f"CWD: {os.getcwd()}\n"
              f"Python interpreter path: {sys.executable}\n"
              f"Python version: {sys.version }\n"
              f"ParUtils version: {u.__VERSION__}\n")

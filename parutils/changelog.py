@@ -1,5 +1,8 @@
-__VERSION__ = '1.0.4'
-# Improved ttry
+__VERSION__ = '1.0.5'
+# CWD log at init
+
+# __VERSION__ = '1.0.4'
+# # Improved ttry
 
 # __VERSION__ = '1.0.3'
 # # loging.close_logger()
