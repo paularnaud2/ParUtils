@@ -33,7 +33,7 @@ def mkdirs(dir, delete=False):
 
 def list_files(in_dir,
                walk=False,
-               file_names_only=False,
+               incl_root=False,
                abspath=False,
                only_list=[],
                ignore_list=[]):
@@ -51,7 +51,7 @@ def list_files(in_dir,
     out = []
     for root, dir, files in os.walk(in_dir):
         for file in files:
-            cur_path = file if file_names_only else p.join(root, file)
+            cur_path = file if not incl_root else p.join(root, file)
             cur_path = p.abspath(cur_path) if abspath else cur_path
             cur_path = cur_path.replace('\\', '/')
             only = not only_list or like_list(file, only_list, case_sensitive=False)
