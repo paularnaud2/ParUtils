@@ -18,8 +18,8 @@ def check_log(in_list, in_list_not=[], log_matches=False, max_warn=0):
     txt = load_txt(logger)
 
     n_w = 0
-    n_w += check(in_list, txt, logger.abs_log_path, log_matches)
-    n_w += check_not(in_list_not, txt, logger.abs_log_path)
+    n_w += check(in_list, txt, logger.log_path, log_matches)
+    n_w += check_not(in_list_not, txt, logger.log_path)
 
     check_warn(n_w, max_warn)
 

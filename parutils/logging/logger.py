@@ -43,12 +43,11 @@ class Logger:
         if self.file_label:
             file_base_name += '_' + self.file_label
         file_name = file_base_name + '.txt'
-        self.log_path = p.join(self.dir, file_name)
-        self.abs_log_path = p.abspath(self.log_path)
+        self.log_path = p.abspath(p.join(self.dir, file_name))
         u.mkdirs(self.dir)
         with open(self.log_path, 'w', encoding='utf-8') as in_file:
             in_file.write('')
-        s = (f"Log file initialised ({self.abs_log_path})\n"
+        s = (f"Log file initialised ({self.log_path})\n"
              f"CWD: {os.getcwd()}\n"
              f"Python interpreter path: {sys.executable}\n"
              f"Python version: {sys.version }\n"
