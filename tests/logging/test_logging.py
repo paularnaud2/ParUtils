@@ -19,6 +19,14 @@ def test_logging(monkeypatch):
     with pytest.warns(UserWarning):
         u.check_log(cl.CL_NOT, cl.CL, max_warn=10)
         u.check_log(cl.CL_1)
+
+    s = "test update_logs"
+    logs = u.get_logs()
+    logs.append(s)
+    u.update_logs(logs)
+    new_logs = u.get_logs()
+    assert logs == new_logs
+    u.check_log([s])
     u.close_logger()
 
     u.Logger('TEST_LOGGING_2')

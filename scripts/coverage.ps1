@@ -1,2 +1,3 @@
-coverage run -m pytest
-coverage html --omit=tests\*,conftest.py
+coverage run --include="parutils\*" -m pytest
+coverage report
+coverage html
