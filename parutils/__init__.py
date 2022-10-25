@@ -31,13 +31,15 @@ from .logging import log
 from .logging import Logger
 from .logging import log_dict
 from .logging import step_log
+from .logging import get_logs
 from .logging import log_print
 from .logging import log_array
 from .logging import log_input
 from .logging import check_log
 from .logging import get_logger
-from .logging import close_logger
+from .logging import update_logs
 from .logging import log_example
+from .logging import close_logger
 from .logging import init_sl_timer
 
 from .dq import diff_list

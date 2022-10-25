@@ -2,6 +2,7 @@ from functools import wraps
 
 from . import g
 from .logger import Logger
+from parutils.file import save_list
 
 
 def get_logger() -> Logger:
@@ -29,3 +30,13 @@ def logger_methode(func):
         return logger_methode(*args, **kwargs)
 
     return new
+
+
+def get_logs():
+    return get_logger().logs
+
+
+def update_logs(logs):
+    logger = get_logger()
+    logger.logs = logs
+    save_list(logs + [''], logger.log_path)
