@@ -33,7 +33,7 @@ def mkdirs(dir, delete=False):
 
 def list_files(in_dir,
                walk=False,
-               incl_root=False,
+               incl_root=True,
                abspath=False,
                only_list=[],
                ignore_list=[]):
