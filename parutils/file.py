@@ -86,17 +86,14 @@ def load_txt(in_path, list_out=True):
     return out
 
 
-def save_list(in_list, out_path, att='w'):
+def save_list(in_list, out_path, mode='w'):
     """Saves a list in a file, each element representing a line"""
 
     mkdirs(p.dirname(out_path))
-    with open(out_path, 'w', encoding='utf-8') as out_file:
-        for i, elt in enumerate(in_list):
-            s = str(elt).strip("\n")
-            if i == 0:
-                out_file.write(s)
-            else:
-                out_file.write('\n' + s)
+    with open(out_path, mode, encoding='utf-8') as out_file:
+        for elt in in_list:
+            s = str(elt).strip('\n') + '\n'
+            out_file.write(s)
 
 
 def count_lines(in_path):
