@@ -1,5 +1,9 @@
-__VERSION__ = '1.0.8'
-# Fixed bug save_list (mode) + line break
+__VERSION__ = '1.0.9'
+# csv quote
+# csv -> csvl, string -> strg (avoid Pylance pb)
+
+# __VERSION__ = '1.0.8'
+# # Fixed bug save_list (mode) + line break
 
 # __VERSION__ = '1.0.7'
 # # file.list_files => incl_root default value = True
