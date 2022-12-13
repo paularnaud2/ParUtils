@@ -11,7 +11,7 @@ def test_file():
     assert out == ['tests/test_csv.py', 'tests/test_dq.py']
 
     out = u.list_files('tests', only_list=['in*.csv'], ignore_list=['file', 'msc', 'init'], incl_root=False, walk=True)
-    assert out == ['in1.csv', 'in2.csv']
+    assert out == ['in1.csv', 'in2.csv', 'in3.csv']
 
     out = u.list_files('tests', only_list=['test'], ignore_list=['file', 'msc', 'init', '0'], abspath=True)
     lst = ['c:/*/tests/test_csv.py', 'c:/*/tests/test_dq.py']

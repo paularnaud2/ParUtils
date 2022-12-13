@@ -1,3 +1,4 @@
+import csv
 from . import file
 
 SEPARATOR = ';'
@@ -17,17 +18,23 @@ def get_csv_fields_dict(in_path):
     return fields
 
 
-def load_csv(in_path):
+def load_csv(in_path, quote=False):
     """Loads a csv file and returns a list whose elements correspond to the
     lines of the 'in_path' file.
     Each element is also a list whose elements correspond to the csv fields.
+    When quote is True, the buitin csv package is used and separators between quote char
+    are ignored (less performant).
     """
-
     out_list = []
     with open(in_path, 'r', encoding='utf-8') as in_file:
-        for line in in_file:
-            line_list = csv_to_list(line)
-            out_list.append(line_list)
+        if quote:
+            reader = csv.reader(in_file, delimiter=SEPARATOR, doublequote='"')
+            for row in reader:
+                out_list.append(row)
+        else:
+            for line in in_file:
+                line_list = csv_to_list(line)
+                out_list.append(line_list)
 
     return out_list
 
