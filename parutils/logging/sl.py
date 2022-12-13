@@ -1,6 +1,6 @@
 from time import time
+from parutils import strg
 from threading import RLock
-from parutils import string
 
 from .main import log
 from .core import get_logger
@@ -24,9 +24,9 @@ def step_log(counter,
 
     # Avoids error if sl time has not been initialised
     st = get_logger().start_time if th_name not in sl_time_dict else sl_time_dict[th_name]
-    dstr = string.get_duration_string(st)
-    bn_1 = string.big_number(step)
-    bn_2 = string.big_number(counter)
+    dstr = strg.get_duration_string(st)
+    bn_1 = strg.big_number(step)
+    bn_2 = strg.big_number(counter)
     s = "{bn1} {what} in {dstr}. {bn2} {what} in total{extra}."
     msg = s.format(bn1=bn_1, bn2=bn_2, dstr=dstr, what=what, extra=extra)
 

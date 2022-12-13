@@ -1,4 +1,4 @@
-from .string import like
+from .strg import like
 from .logging import log
 
 
@@ -20,4 +20,3 @@ def ttry(f, e_ref, *args, **kwargs):
         s = "[ttry] No exception was caught"
         log(s)
         raise Exception(s)
-

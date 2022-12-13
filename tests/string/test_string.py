@@ -35,14 +35,14 @@ def like():
     u.log("like m ok")
 
     lst = ['1', 'test']
-    e_ref = u.string.E_WRONG_TYPE_LIST
+    e_ref = u.strg.E_WRONG_TYPE_LIST
     u.ttry(u.like_list, e_ref, s, 'test')
     assert u.like_list(s, lst)
     assert u.like_list('TEST', lst) is False
     u.log("like_list ok")
 
     dct = {'1': ['a', 'b'], '2': 'test'}
-    e_ref = u.string.E_WRONG_TYPE_DICT
+    e_ref = u.strg.E_WRONG_TYPE_DICT
     u.ttry(u.like_dict, e_ref, s, 'test')
     assert u.like_dict(s, dct) == '2'
     assert u.like_dict('b', dct) == '1'

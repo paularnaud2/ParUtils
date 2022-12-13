@@ -2,7 +2,7 @@ import os
 import os.path as p
 from shutil import rmtree
 
-from .string import like_list
+from .strg import like_list
 
 
 def delete_folder(dir):

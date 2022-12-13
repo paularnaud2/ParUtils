@@ -12,7 +12,7 @@ def test_csv():
     s = u.csv_clean('FIELD1;\n')
     assert s == 'FIELD1'
 
-    e_ref = u.csv.E_WRONG_TYPE_LIST
+    e_ref = u.csvl.E_WRONG_TYPE_LIST
     u.ttry(u.save_csv, e_ref, ['1'], OUT_PATH)
 
 

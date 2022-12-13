@@ -1,14 +1,14 @@
 from .changelog import __VERSION__
 
-from .string import like
-from .string import like_list
-from .string import like_dict
-from .string import hash512
-from .string import big_number
-from .string import extend_str
-from .string import get_duration_ms
-from .string import gen_random_string
-from .string import get_duration_string
+from .strg import like
+from .strg import like_list
+from .strg import like_dict
+from .strg import hash512
+from .strg import big_number
+from .strg import extend_str
+from .strg import get_duration_ms
+from .strg import gen_random_string
+from .strg import get_duration_string
 
 from .file import mkdirs
 from .file import load_txt
@@ -17,12 +17,12 @@ from .file import count_lines
 from .file import delete_folder
 from .file import list_files
 
-from .csv import load_csv
-from .csv import save_csv
-from .csv import csv_clean
-from .csv import csv_to_list
-from .csv import write_csv_line
-from .csv import get_csv_fields_dict
+from .csvl import load_csv
+from .csvl import save_csv
+from .csvl import csv_clean
+from .csvl import csv_to_list
+from .csvl import write_csv_line
+from .csvl import get_csv_fields_dict
 
 from .msc import list_to_dict
 from .msc import replace_from_dict
