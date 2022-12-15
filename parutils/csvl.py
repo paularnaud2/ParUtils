@@ -25,6 +25,7 @@ def load_csv(in_path, quote=False):
     When quote is True, the buitin csv package is used and separators between quote char
     are ignored (less performant).
     """
+
     out_list = []
     with open(in_path, 'r', encoding='utf-8') as in_file:
         if quote:
@@ -49,6 +50,7 @@ def save_csv(array_in, out_path, mode='w', quote=False):
     """Saves a list to a csv file
 
     - mode: mode for the open methode.
+    - quote: determines whether each field should be wrapped into double quotes or not (default=False)
     """
     import os.path as p
 
@@ -87,6 +89,7 @@ def get_header(in_path, csv=False):
 
     - csv: if True, the returned header is a list containing each csv field
     """
+
     with open(in_path, 'r', encoding='utf-8') as in_file:
         header = in_file.readline().strip('\n')
 

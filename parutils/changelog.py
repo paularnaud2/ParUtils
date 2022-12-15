@@ -1,3 +1,6 @@
+__VERSION__ = '1.1.0'
+# save_csv quote
+
 __VERSION__ = '1.0.9'
 # csv quote
 # csv -> csvl, string -> strg (avoid Pylance pb)
