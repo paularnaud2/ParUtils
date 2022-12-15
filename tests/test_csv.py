@@ -7,8 +7,11 @@ OUT_PATH = 'tests/files/out.csv'
 
 def test_csv():
 
-    ar = u.load_csv(IN3_PATH, True)
-    assert ar[1][1] == 'comment1;comment2'
+    ar1 = u.load_csv(IN3_PATH, True)
+    assert ar1[1][1] == 'comment1;comment2'
+    u.save_csv(ar1, IN3_PATH, quote=True)
+    ar2 = u.load_csv(IN3_PATH, True)
+    assert ar1 == ar2
 
     d = u.get_csv_fields_dict(IN1_PATH)
     assert d == {'ID': 0, 'NAME': 1}

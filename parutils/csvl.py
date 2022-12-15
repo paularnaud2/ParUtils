@@ -45,7 +45,7 @@ def csv_to_list(line_in):
     return line_in.strip('\n').split(SEPARATOR)
 
 
-def save_csv(array_in, out_path, mode='w'):
+def save_csv(array_in, out_path, mode='w', quote=False):
     """Saves a list to a csv file
 
     - mode: mode for the open methode.
@@ -55,10 +55,10 @@ def save_csv(array_in, out_path, mode='w'):
     file.mkdirs(p.dirname(out_path))
     with open(out_path, mode, encoding='utf-8') as out_file:
         for row in array_in:
-            write_csv_line(row, out_file)
+            write_csv_line(row, out_file, quote)
 
 
-def write_csv_line(row, out_file):
+def write_csv_line(row, out_file, quote=False):
     """Writes a line to a csv file
 
     - row: has to be a list
@@ -66,8 +66,9 @@ def write_csv_line(row, out_file):
 
     if not isinstance(row, list):
         raise Exception(E_WRONG_TYPE_LIST)
-    else:
-        line_out = SEPARATOR.join(row)
+    if quote:
+        row = [f'"{e}"' for e in row]
+    line_out = SEPARATOR.join(row)
     line_out += '\n'
     out_file.write(line_out)
 
