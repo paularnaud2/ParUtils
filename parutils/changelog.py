@@ -1,5 +1,8 @@
-__VERSION__ = '1.1.0'
-# save_csv quote
+__VERSION__ = '1.1.1'
+# consistent dirs and path (/ -> \)
+
+# __VERSION__ = '1.1.0'
+# # save_csv quote
 
 # __VERSION__ = '1.0.9'
 # # csv quote
