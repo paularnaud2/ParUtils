@@ -1,13 +1,13 @@
 import conftest
 import parutils as u
 
-FILES_DIR = 'tests/files/'
+FILES_DIR = 'tests\\files'
 OUT_DIR = conftest.TESTS_OUT_DIR
-DUP_IN = FILES_DIR + 'dup_in.csv'
-DUP_OUT = OUT_DIR + '/out_dup.csv'
-DUP_OUT_REF = FILES_DIR + 'dup_out_ref.csv'
-IN_1 = FILES_DIR + 'in1.csv'
-IN_2 = FILES_DIR + 'in2.csv'
+DUP_IN = FILES_DIR + '\\dup_in.csv'
+DUP_OUT = OUT_DIR + '\\out_dup.csv'
+DUP_OUT_REF = FILES_DIR + '\\dup_out_ref.csv'
+IN_1 = FILES_DIR + '\\in1.csv'
+IN_2 = FILES_DIR + '\\in2.csv'
 
 
 def test_dq():

@@ -8,17 +8,17 @@ def test_file():
     assert len(u.list_files('tests')) > 1
 
     out = u.list_files('tests', only_list=['test'], ignore_list=['file', 'msc', '0'])
-    assert out == ['tests/test_csv.py', 'tests/test_dq.py']
+    assert out == ['tests\\test_csv.py', 'tests\\test_dq.py']
 
     out = u.list_files('tests', only_list=['in*.csv'], ignore_list=['file', 'msc', 'init'], incl_root=False, walk=True)
     assert out == ['in1.csv', 'in2.csv', 'in3.csv']
 
     out = u.list_files('tests', only_list=['test'], ignore_list=['file', 'msc', 'init', '0'], abspath=True)
-    lst = ['c:/*/tests/test_csv.py', 'c:/*/tests/test_dq.py']
+    lst = ['c:\\*\\tests\\test_csv.py', 'c:\\*\\tests\\test_dq.py']
     for elt in out:
         assert u.like_list(elt, lst, case_sensitive=False)
 
-    path = 'out/tests/out.txt'
+    path = 'out\\tests\\out.txt'
     u.save_list(out, path)
     assert u.count_lines(path) == 2
 

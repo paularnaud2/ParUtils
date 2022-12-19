@@ -1,5 +1,5 @@
-TESTS_LOG_DIR = 'log/tests'
-TESTS_OUT_DIR = 'out/tests'
+TESTS_LOG_DIR = 'log\\tests'
+TESTS_OUT_DIR = 'out\\tests'
 
 
 def init():

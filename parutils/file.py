@@ -53,7 +53,6 @@ def list_files(in_dir,
         for file in files:
             cur_path = file if not incl_root else p.join(root, file)
             cur_path = p.abspath(cur_path) if abspath else cur_path
-            cur_path = cur_path.replace('\\', '/')
             only = not only_list or like_list(file, only_list, case_sensitive=False)
             ignore = not like_list(file, ignore_list, case_sensitive=False)
             if only and ignore:

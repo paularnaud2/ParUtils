@@ -1,8 +1,8 @@
 import parutils as u
 
-IN1_PATH = 'tests/files/in1.csv'
-IN3_PATH = 'tests/files/in3.csv'
-OUT_PATH = 'tests/files/out.csv'
+IN1_PATH = 'tests\\files\\in1.csv'
+IN3_PATH = 'tests\\files\\in3.csv'
+OUT_PATH = 'tests\\files\\out.csv'
 
 
 def test_csv():
