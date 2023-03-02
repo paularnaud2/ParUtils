@@ -13,6 +13,7 @@ def test_logging(monkeypatch):
 
     u.Logger('TEST_LOGGING_1')
     u.Logger()
+    u.set_logger(u.get_logger())
     u.log("This will be logged", "in a file\n")
     u.check_log(cl.CL, cl.CL_NOT)
 

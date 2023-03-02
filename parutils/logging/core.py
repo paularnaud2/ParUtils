@@ -15,6 +15,11 @@ def get_logger() -> Logger:
     return logger
 
 
+def set_logger(logger):
+
+    g.cur_logger = logger
+
+
 def close_logger():
 
     if g.cur_logger:

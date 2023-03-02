@@ -10,6 +10,7 @@ from .sl import init_sl_timer
 
 from .core import get_logs
 from .core import get_logger
+from .core import set_logger
 from .core import update_logs
 from .core import close_logger
 
