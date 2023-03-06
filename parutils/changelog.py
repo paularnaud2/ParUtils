@@ -1,5 +1,8 @@
-__VERSION__ = '1.1.2'
-# set_logger
+__VERSION__ = '1.1.3'
+# recursive log_dict
+
+# __VERSION__ = '1.1.2'
+# # set_logger
 
 # __VERSION__ = '1.1.1'
 # # consistent dirs and path (/ -> \)
