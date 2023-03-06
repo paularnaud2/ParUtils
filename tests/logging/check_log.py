@@ -30,8 +30,11 @@ CL_END = [
     "5 elements appended in * ms. 20 elements appended in total.",
     "out_list: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20]",
     "Examples of duplicates (limited to 5)",
-    "	key1: value1",
-    "	key2: value2",
+    "key1: value1",
+    "key2: value2",
+    "key3:",
+    "	skey1: value1",
+    "	skey2: value2",
     f"[ttry] Exception caught match expected ('check_log ko, too many warnings ({N_W} warnings)')",
     "Expression matched: Log file initialised (*)",
 ]

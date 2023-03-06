@@ -37,9 +37,13 @@ def log_array(array, nb_tab=0):
         log_print(elt, nb_tab=nb_tab)
 
 
-def log_dict(dict, nb_tab=0):
-    for key in dict:
-        log_print(f'{key}: {dict[key]}', nb_tab=nb_tab)
+def log_dict(d, nb_tab=0, depth=0):
+    for key in d:
+        if isinstance(d[key], dict) and depth > 0:
+            log_print(f'{key}:', nb_tab=nb_tab)
+            log_dict(d[key], nb_tab + 1, depth - 1)
+        else:
+            log_print(f'{key}: {d[key]}', nb_tab=nb_tab)
 
 
 def log_example(list_in, what="duplicates", n_print=5):
