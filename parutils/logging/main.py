@@ -12,7 +12,7 @@ def log(*args, level=0, c_out=True):
 
 
 @logger_methode
-def log_print(*args, level=0, c_out=True, nb_tab=0, dashes=0):
+def log_print(*args, level=0, c_out=True, nb_tab=0, dashes=0, tab_char='    '):
     """Prints something in the current log file (log_path)
 
     - level: log level. Current log level is the attribute level of the current logger.
@@ -37,13 +37,13 @@ def log_array(array, nb_tab=0):
         log_print(elt, nb_tab=nb_tab)
 
 
-def log_dict(d, nb_tab=0, depth=0):
+def log_dict(d, nb_tab=0, depth=0, tab_char='    '):
     for key in d:
         if isinstance(d[key], dict) and depth > 0:
             log_print(f'{key}:', nb_tab=nb_tab)
-            log_dict(d[key], nb_tab + 1, depth - 1)
+            log_dict(d[key], nb_tab + 1, depth - 1, tab_char=tab_char)
         else:
-            log_print(f'{key}: {d[key]}', nb_tab=nb_tab)
+            log_print(f'{key}: {d[key]}', nb_tab=nb_tab, tab_char=tab_char)
 
 
 def log_example(list_in, what="duplicates", n_print=5):

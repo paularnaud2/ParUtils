@@ -54,7 +54,9 @@ def test_logging(monkeypatch):
     u.log_example(out_list)
     u.log_example([])
     d = {'key1': 'value1', 'key2': 'value2', 'key3': {'skey1': 'value1', 'skey2': 'value2'}}
-    u.log_dict(d, depth=1)
+    u.log_dict(d, depth=1, tab_char='  ')
+    u.log_dict(d, depth=1, tab_char='    ')
+    u.log_dict(d, depth=1, tab_char='\t')
 
     u.check_log(cl.CL, log_matches=True)
     u.check_log(cl.CL_END)

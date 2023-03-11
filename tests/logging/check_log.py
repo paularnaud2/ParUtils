@@ -35,6 +35,10 @@ CL_END = [
     "key3:",
     "	skey1: value1",
     "	skey2: value2",
+    "  skey1: value1",
+    "  skey2: value2",
+    "    skey1: value1",
+    "    skey2: value2",
     f"[ttry] Exception caught match expected ('check_log ko, too many warnings ({N_W} warnings)')",
     "Expression matched: Log file initialised (*)",
 ]

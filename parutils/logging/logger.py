@@ -69,7 +69,7 @@ class Logger:
         s = f"{fdate}{msg}"
         self.log_print(s, c_out=c_out)
 
-    def log_print(self, *args, level=0, c_out=True, nb_tab=0, dashes=0):
+    def log_print(self, *args, level=0, c_out=True, nb_tab=0, dashes=0, tab_char='  '):
         if self.level < level:
             return
 
@@ -77,7 +77,7 @@ class Logger:
         s = ' '.join(args)
         if nb_tab != 0:
             for i in range(0, nb_tab):
-                s = '\t' + s
+                s = tab_char + s
 
         if dashes > 0:
             s = u.extend_str(s, '-', dashes)
