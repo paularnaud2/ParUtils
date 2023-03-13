@@ -1,5 +1,8 @@
-__VERSION__ = '1.1.4'
-# settable tab char in log_dict
+__VERSION__ = '1.1.5'
+# Fixed bug in log_dict / log_print (tab_char)
+
+# __VERSION__ = '1.1.4'
+# # settable tab char in log_dict
 
 # __VERSION__ = '1.1.3'
 # # recursive log_dict
