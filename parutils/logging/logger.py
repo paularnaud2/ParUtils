@@ -69,7 +69,7 @@ class Logger:
         s = f"{fdate}{msg}"
         self.log_print(s, c_out=c_out)
 
-    def log_print(self, *args, level=0, c_out=True, nb_tab=0, dashes=0, tab_char='  '):
+    def log_print(self, *args, level=0, c_out=True, nb_tab=0, dashes=0, tab_char='    '):
         if self.level < level:
             return
 

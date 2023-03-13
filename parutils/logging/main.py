@@ -40,7 +40,7 @@ def log_array(array, nb_tab=0):
 def log_dict(d, nb_tab=0, depth=0, tab_char='    '):
     for key in d:
         if isinstance(d[key], dict) and depth > 0:
-            log_print(f'{key}:', nb_tab=nb_tab)
+            log_print(f'{key}:', nb_tab=nb_tab, tab_char=tab_char)
             log_dict(d[key], nb_tab + 1, depth - 1, tab_char=tab_char)
         else:
             log_print(f'{key}: {d[key]}', nb_tab=nb_tab, tab_char=tab_char)
