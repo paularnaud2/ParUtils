@@ -2,17 +2,19 @@ E_WRONG_TYPE_LIST = "like_list must be of type list"
 E_WRONG_TYPE_DICT = "like_dict must be of type dict"
 
 
-def like(in_str, like_string, case_sensitive=True):
+def like(in_str, like_string, case_sensitive=True, exact=False):
     """Behaves as the LIKE of Oracle SQL (you can match strings with wildcard
     character '*'). Returns the match object that you can access with the group
     function.
 
     Important note:
-    If in_str is multiline and contains 'Hello World'
-        - like(in_str, 'Hello World') returns True
+    If in_str is multiline and contains 'Hello World' among other characters
+        - like(in_str, 'Hello World') returns True if exact=False
+        - like(in_str, 'Hello World') returns False if exact=True, and like(in_str, '*Hello World*') returns a match object
         - like(in_str, 'Hel*ld') returns a match object
-    If in_str is a one line string (no \n) and contains 'Hello World'
-        - like(in_str, 'Hello World') returns True
+    If in_str is a one line string (no \n) and contains 'Hello World' among other characters
+        - like(in_str, 'Hello World') returns True if exact=False
+        - like(in_str, 'Hello World') returns False if exact=True, and like(in_str, '*Hello World*') returns a match object
         - like(in_str, 'Hel*ld') returns None
         - like(in_str, '*Hel*ld*') returns a match object
 
@@ -27,7 +29,7 @@ def like(in_str, like_string, case_sensitive=True):
         in_str = in_str.lower()
         like_string = like_string.lower()
 
-    if '*' not in like_string:
+    if '*' not in like_string and not exact:
         return like_string in in_str
 
     like_string = re.escape(like_string)
@@ -39,7 +41,7 @@ def like(in_str, like_string, case_sensitive=True):
     return m
 
 
-def like_list(in_str, like_list, case_sensitive=True):
+def like_list(in_str, like_list, case_sensitive=True, exact=False):
     """Returns True if in_str matches (using the like function) one of the like_list elements.
     See the like function description for more details."""
 
@@ -47,13 +49,13 @@ def like_list(in_str, like_list, case_sensitive=True):
         raise Exception(E_WRONG_TYPE_LIST)
 
     for elt in like_list:
-        if like(in_str, elt, case_sensitive):
+        if like(in_str, elt, case_sensitive, exact=exact):
             return elt
 
     return False
 
 
-def like_dict(in_str, like_dict, case_sensitive=True, skey=''):
+def like_dict(in_str, like_dict, case_sensitive=True, skey='', exact=False):
     """Returns the key whose list elt matches (using the like_list function) in_str.
     See the like_list function description for more details."""
 
@@ -62,9 +64,9 @@ def like_dict(in_str, like_dict, case_sensitive=True, skey=''):
 
     for key in like_dict:
         item = like_dict[key] if not skey else like_dict[key][skey]
-        if isinstance(item, str) and like(in_str, item, case_sensitive):
+        if isinstance(item, str) and like(in_str, item, case_sensitive, exact=exact):
             return key
-        if isinstance(item, list) and like_list(in_str, item, case_sensitive):
+        if isinstance(item, list) and like_list(in_str, item, case_sensitive, exact=exact):
             return key
 
     return False

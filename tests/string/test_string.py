@@ -26,6 +26,8 @@ def like():
 
     s = '2 test ok?'
     assert u.like(s, 'test')
+    assert not u.like(s, 'test', exact=True)
+    assert u.like(s, '*test*', exact=True)
     assert u.like(s, 'TEST', case_sensitive=False)
     assert u.like(s, 'TEST') is False
     u.log("like simple ok")
@@ -38,6 +40,7 @@ def like():
     e_ref = u.strg.E_WRONG_TYPE_LIST
     u.ttry(u.like_list, e_ref, s, 'test')
     assert u.like_list(s, lst)
+    assert u.like_list(s, lst, exact=True) is False
     assert u.like_list('TEST', lst) is False
     u.log("like_list ok")
 
@@ -45,6 +48,7 @@ def like():
     e_ref = u.strg.E_WRONG_TYPE_DICT
     u.ttry(u.like_dict, e_ref, s, 'test')
     assert u.like_dict(s, dct) == '2'
+    assert u.like_dict(s, dct, exact=True) is False
     assert u.like_dict('b', dct) == '1'
     assert u.like_dict('TEST', dct) is False
     u.log("like_dict ok")
