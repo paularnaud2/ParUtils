@@ -32,9 +32,9 @@ def log_input(str_in):
     return command
 
 
-def log_array(array, nb_tab=0):
+def log_array(array, nb_tab=0, tab_char='    '):
     for elt in array:
-        log_print(elt, nb_tab=nb_tab)
+        log_print(elt, nb_tab=nb_tab, tab_char=tab_char)
 
 
 def log_dict(d, nb_tab=0, depth=0, tab_char='    '):

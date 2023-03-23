@@ -1,5 +1,8 @@
-__VERSION__ = '1.1.6'
-# exact arg for like, like_list and like_dict
+__VERSION__ = '1.1.7'
+# 
+
+# __VERSION__ = '1.1.6'
+# # exact arg for like, like_list and like_dict
 
 # __VERSION__ = '1.1.5'
 # # Fixed bug in log_dict / log_print (tab_char)
