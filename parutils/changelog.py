@@ -1,5 +1,6 @@
 __VERSION__ = '1.1.7'
-# 
+# log_array - char_tab arg
+# check_log - name arg
 
 # __VERSION__ = '1.1.6'
 # # exact arg for like, like_list and like_dict
