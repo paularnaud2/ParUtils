@@ -6,14 +6,15 @@ from .main import log_print
 from .core import get_logger
 
 
-def check_log(in_list, in_list_not=[], log_matches=False, max_warn=0):
+def check_log(in_list, in_list_not=[], log_matches=False, max_warn=0, name=''):
     """Checks whether the current log file contains the 'in_list' elements.
     If it doesn't, a warning is thrown.
 
     - log_matches: if True, the matches are printed out in the log file
     """
 
-    log('check_log...')
+    s = ' ' + name if name else ''
+    log(f'check_log{s}...')
     logger = get_logger()
     txt = load_txt(logger)
 
