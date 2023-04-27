@@ -6,7 +6,7 @@ from .main import log_print
 from .core import get_logger
 
 
-def check_log(in_list, in_list_not=[], log_matches=False, max_warn=0, name=''):
+def check_log(in_list=[], in_list_not=[], log_matches=False, max_warn=0, name=''):
     """Checks whether the current log file contains the 'in_list' elements.
     If it doesn't, a warning is thrown.
 
