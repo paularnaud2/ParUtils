@@ -6,7 +6,6 @@ from time import time
 from threading import RLock
 from datetime import datetime
 
-from . import g
 from . import const
 
 lock = RLock()
@@ -23,9 +22,10 @@ class Logger:
         dir=None,
         file_format=None,
     ) -> None:
+        from . import g
 
-        if g.cur_logger and g.cur_logger.file_write and not force_new_logger:
-            self = g.cur_logger
+        if g.logger and g.logger.file_write and not force_new_logger:
+            self = g.logger
             return
 
         self.logs = []
@@ -53,11 +53,12 @@ class Logger:
              f"Python version: {sys.version }\n"
              f"ParUtils version: {u.__VERSION__}\n")
         self.log_print(s)
-        g.cur_logger = self
+        g.logger = self
 
     @staticmethod
     def close():
-        g.cur_logger = None
+        from . import g
+        g.logger = None
 
     def log(self, *args, level=0, c_out=True):
         if self.level < level:

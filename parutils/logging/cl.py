@@ -1,6 +1,7 @@
 import warnings
 import parutils as u
 
+from . import Logger
 from .main import log
 from .main import log_print
 from .core import get_logger
@@ -25,7 +26,7 @@ def check_log(in_list=[], in_list_not=[], log_matches=False, max_warn=0, name=''
     check_warn(n_w, max_warn)
 
 
-def load_txt(logger):
+def load_txt(logger: Logger):
     if not hasattr(logger, 'log_path'):
         s = 'No log file has been initialised. Initialise a log file by instanciating a logger object with Logger().'
         raise Exception(s)

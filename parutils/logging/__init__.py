@@ -1,3 +1,6 @@
+from . import const
+from .logger import Logger
+
 from .main import log
 from .main import log_dict
 from .main import log_print
@@ -14,6 +17,4 @@ from .core import set_logger
 from .core import update_logs
 from .core import close_logger
 
-from . import const
 from .cl import check_log
-from .logger import Logger

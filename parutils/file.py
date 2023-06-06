@@ -2,12 +2,12 @@ import os
 import os.path as p
 from shutil import rmtree
 
+from .logging import log
 from .strg import like_list
 
 
 def delete_folder(dir):
     """Deletes a folder and its content"""
-    from parutils.logging.main import log
 
     if p.exists(dir):
         rmtree(dir)
@@ -18,7 +18,6 @@ def mkdirs(dir, delete=False):
     """Same as os.makedirs but
     - Input can also be a path
     - With a 'delete' option which (if True) deletes the folder if it already exists."""
-    from parutils.logging.main import log
 
     if not dir:
         return

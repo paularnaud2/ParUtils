@@ -1,4 +1,6 @@
 import csv
+from io import TextIOWrapper
+
 from . import file
 
 SEPARATOR = ';'
@@ -40,7 +42,7 @@ def load_csv(in_path, quote=False):
     return out_list
 
 
-def csv_to_list(line_in):
+def csv_to_list(line_in: str):
     """Converts a csv line to a list using SEPARATOR as separator"""
 
     return line_in.strip('\n').split(SEPARATOR)
@@ -60,7 +62,7 @@ def save_csv(array_in, out_path, mode='w', quote=False):
             write_csv_line(row, out_file, quote)
 
 
-def write_csv_line(row, out_file, quote=False):
+def write_csv_line(row, out_file: TextIOWrapper, quote=False):
     """Writes a line to a csv file
 
     - row: has to be a list
@@ -75,7 +77,7 @@ def write_csv_line(row, out_file, quote=False):
     out_file.write(line_out)
 
 
-def csv_clean(s):
+def csv_clean(s: str):
     """Cleans a csv field by removing csv separators and new line characters"""
 
     out = s.replace('\r', '')

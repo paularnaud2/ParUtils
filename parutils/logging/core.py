@@ -2,28 +2,27 @@ from functools import wraps
 
 from . import g
 from .logger import Logger
-from parutils.file import save_list
 
 
 def get_logger() -> Logger:
 
-    if g.cur_logger is None:
+    if g.logger is None:
         logger = Logger(file_write=False)
-        g.cur_logger = logger
+        g.logger = logger
     else:
-        logger = g.cur_logger
+        logger = g.logger
     return logger
 
 
 def set_logger(logger):
 
-    g.cur_logger = logger
+    g.logger = logger
 
 
 def close_logger():
 
-    if g.cur_logger:
-        g.cur_logger.close()
+    if g.logger:
+        g.logger.close()
 
 
 def logger_methode(func):
@@ -42,6 +41,8 @@ def get_logs():
 
 
 def update_logs(logs):
+    from parutils.file import save_list
+
     logger = get_logger()
     logger.logs = logs
     save_list(logs + [''], logger.log_path)

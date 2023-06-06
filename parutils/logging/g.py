@@ -1,1 +1,3 @@
-cur_logger = None
+from . import Logger
+
+logger: Logger = None

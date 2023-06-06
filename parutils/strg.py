@@ -1,8 +1,10 @@
+import re
+
 E_WRONG_TYPE_LIST = "like_list must be of type list"
 E_WRONG_TYPE_DICT = "like_dict must be of type dict"
 
 
-def like(in_str, like_string, case_sensitive=True, exact=False):
+def like(in_str: str, like_string: str, case_sensitive=True, exact=False) -> re.Match:
     """Behaves as the LIKE of Oracle SQL (you can match strings with wildcard
     character '*'). Returns the match object that you can access with the group
     function.
@@ -23,7 +25,6 @@ def like(in_str, like_string, case_sensitive=True, exact=False):
     - m.group(0) => 'Hello World'
     - m.group(1) => 'll'
     """
-    import re
 
     if not case_sensitive:
         in_str = in_str.lower()
@@ -72,7 +73,7 @@ def like_dict(in_str, like_dict, case_sensitive=True, skey='', exact=False):
     return False
 
 
-def hash512(in_str, length=10):
+def hash512(in_str: str, length=10):
     """Contrary to hash, this hash function is not randomised, meaning it
     always outputs the same string for the same input string"""
     import hashlib
