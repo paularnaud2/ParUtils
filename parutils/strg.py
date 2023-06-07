@@ -164,3 +164,8 @@ def big_number(int_in):
         if counter % 3 == 0 and position != 0:
             out = " " + out
     return (out)
+
+
+def truncate(s, length=100):
+    out = s[0:length - 3] + '...' if len(s) > length else s
+    return out
