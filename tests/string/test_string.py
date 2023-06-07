@@ -1,4 +1,3 @@
-from re import T
 import parutils as u
 from tests.string.check_log import CL
 
@@ -62,6 +61,7 @@ def test_string():
 
     u.Logger('TEST_STRING', True)
     assert u.big_number(1000) == '1 000'
+    assert u.truncate('test_test', 4) == 't...'
     get_duration()
     like()
     u.check_log(CL)

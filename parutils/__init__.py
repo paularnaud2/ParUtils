@@ -20,6 +20,7 @@ from .strg import like
 from .strg import like_list
 from .strg import like_dict
 from .strg import hash512
+from .strg import truncate
 from .strg import big_number
 from .strg import extend_str
 from .strg import get_duration_ms
