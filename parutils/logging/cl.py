@@ -23,7 +23,7 @@ def check_log(in_list=[], in_list_not=[], log_matches=False, max_warn=0, name=''
     n_w += check(in_list, txt, logger.log_path, log_matches)
     n_w += check_not(in_list_not, txt, logger.log_path)
 
-    check_warn(n_w, max_warn)
+    check_warn(n_w, max_warn, name)
 
 
 def load_txt(logger: Logger):
@@ -60,9 +60,10 @@ def check_not(in_list_not, txt, log_path):
     return n_w
 
 
-def check_warn(n_w, max_warn):
+def check_warn(n_w, max_warn, name):
+    s = f' {name}' if name else ''
     if n_w == 0:
-        log('check_log ok')
+        log(f'check_log{s} ok')
     elif n_w <= max_warn:
         log(f'check_log ended with {n_w} warnings')
     else:

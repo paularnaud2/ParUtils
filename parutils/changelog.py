@@ -1,6 +1,9 @@
-__VERSION__ = '1.1.8'
-# check_log - in_list optional
-# strg - truncate
+__VERSION__ = '1.1.9'
+# check_log - name appears when check_log ok
+
+# __VERSION__ = '1.1.8'
+# # check_log - in_list optional
+# # strg - truncate
 
 # __VERSION__ = '1.1.7'
 # # log_array - char_tab arg

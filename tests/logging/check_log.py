@@ -47,4 +47,6 @@ CL_END = [
     "		sskey2: value2",
     f"[ttry] Exception caught match expected ('check_log ko, too many warnings ({N_W} warnings)')",
     "Expression matched: Log file initialised (*)",
+    "check_log TEST_NAME...",
+    "check_log TEST_NAME ok",
 ]

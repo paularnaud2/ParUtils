@@ -15,7 +15,7 @@ def test_logging(monkeypatch):
     u.Logger()
     u.set_logger(u.get_logger())
     u.log("This will be logged", "in a file\n")
-    u.check_log(cl.CL, cl.CL_NOT, name='CL_TEST')
+    u.check_log(cl.CL, cl.CL_NOT)
 
     with pytest.warns(UserWarning):
         u.check_log(cl.CL_NOT, cl.CL, max_warn=10)
@@ -60,7 +60,7 @@ def test_logging(monkeypatch):
     u.log_dict(d, depth=2, tab_char='    ')
     u.log_dict(d, depth=2, tab_char='\t')
 
-    u.check_log(cl.CL, log_matches=True)
+    u.check_log(cl.CL, log_matches=True, name='TEST_NAME')
     u.check_log(cl.CL_END)
 
     u.close_logger()
