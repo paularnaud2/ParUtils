@@ -90,6 +90,7 @@ class Logger:
 
     def _write_log(self, str_in):
         s = str(str_in)
+        u.g.logs.append(s)
         self.logs.append(s)
         if not self.file_write:
             return

@@ -5,6 +5,7 @@ from tests.logging import check_log as cl
 
 def test_logging(monkeypatch):
 
+    u.g.logs = []
     u.close_logger()
     u.log("This won't be logged in a file\n")
     e_ref = "No log file has been initialised"
@@ -59,6 +60,7 @@ def test_logging(monkeypatch):
     u.log_dict(d, depth=2, tab_char='  ')
     u.log_dict(d, depth=2, tab_char='    ')
     u.log_dict(d, depth=2, tab_char='\t')
+    assert "This won't be logged in a file" in u.g.logs[0]
 
     u.check_log(cl.CL, log_matches=True, name='TEST_NAME')
     u.check_log(cl.CL_END)

@@ -1,5 +1,7 @@
 from .changelog import __VERSION__
 
+from . import g
+
 from .logging import log
 from .logging import Logger
 from .logging import log_dict
