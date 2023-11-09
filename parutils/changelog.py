@@ -1,6 +1,9 @@
-__VERSION__ = '1.1.9'
-# check_log - name appears when check_log ok
-# u.g.logs
+__VERSION__ = '1.2.0'
+# logging - error handling
+
+# __VERSION__ = '1.1.9'
+# # check_log - name appears when check_log ok
+# # u.g.logs
 
 # __VERSION__ = '1.1.8'
 # # check_log - in_list optional
