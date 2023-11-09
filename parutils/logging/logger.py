@@ -29,6 +29,8 @@ class Logger:
             return
 
         self.logs = []
+        self.buffer = ''
+        self.err_count = 0
         self.level = level if level else const.DEFAULT_LEVEL
         self.log_format = log_format if log_format else const.DEFAULT_LOG_FORMAT
         self.file_write = file_write
@@ -84,15 +86,34 @@ class Logger:
             s = u.extend_str(s, '-', dashes)
 
         with lock:
-            if c_out:
-                print(s)
-            self._write_log(s)
+            self._write_log(s, c_out)
 
-    def _write_log(self, str_in):
+    def _write_log(self, str_in, c_out):
         s = str(str_in)
+        if not self.file_write:
+            self._append_and_print(s, c_out)
+            return
+        try:
+            with open(self.log_path, 'a', encoding='utf-8') as in_file:
+                in_file.write(self.buffer + s + '\n')
+            self.buffer = ''
+            self.err_count = 0
+        except Exception as e:
+            s = self._handle_e(str_in, e)
+        self._append_and_print(s, c_out)
+
+    def _append_and_print(self, s, c_out):
         u.g.logs.append(s)
         self.logs.append(s)
-        if not self.file_write:
-            return
-        with open(self.log_path, 'a', encoding='utf-8') as in_file:
-            in_file.write(s + '\n')
+        if c_out:
+            print(s)
+
+    def _handle_e(self, str_in, e):
+        s = f"Warning: the following message couldn't be logged because of {e}: {u.truncate(str_in, 256)}"
+        self.buffer += s + '\n'
+        self.err_count += 1
+        if self.err_count > const.MAX_ERR_COUNT:
+            s += f"\nThe number of logging errors in a row reached the maximum set limit of {const.MAX_ERR_COUNT}. Disabling file_write."
+            self.buffer += s + '\n'
+            self.file_write = False
+        return s

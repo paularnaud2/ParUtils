@@ -1,18 +1,16 @@
-N_W = 6
-
-CL = [
+LOG_FILE = [
     "Log file initialised (*)",
     "Python interpreter path: ",
     "Python version: *",
     "ParUtils version: *",
     "This will be logged in a file",
 ]
-
-CL_NOT = [
+LOG_FILE_NOT = [
     "This won't be logged in a file",
 ]
 
-CL_0 = [
+N_W = len(LOG_FILE) + len(LOG_FILE_NOT)
+WARNINGS = [
     "Expression 'This won't be logged in a file' couldn't be found in log file",
     "Expression 'Log file initialised (*)' was found in log file",
     "Expression 'Python interpreter path: ' was found in log file",
@@ -20,16 +18,24 @@ CL_0 = [
     "Expression 'ParUtils version: *' was found in log file",
     "Expression 'This will be logged in a file' was found in log file",
 ]
+WARN = WARNINGS + [f"check_log ended with {N_W} warnings"]
+LEVEL_WARN_ERR = WARNINGS + [
+    f"check_log ko, too many warnings ({N_W} warnings)",
+    f"[ttry] Exception caught match expected ('check_log ko, too many warnings ({N_W} warnings)')",
+]
 
-CL_1 = CL_0 + [f"check_log ended with {N_W} warnings"]
-CL_2 = CL_0 + [f"check_log ko, too many warnings ({N_W} warnings)"]
-
-CL_END = [
+LOG_INPUT = [
     "Test log input",
     "user command",
+]
+
+STEP_LOG = [
     "5 elements appended in * ms. 20 elements appended in total.",
-    "out_list: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20]",
     "Examples of duplicates (limited to 5)",
+    "out_list: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20]",
+]
+
+LOG_DICT = [
     "key1: value1",
     "key2: value2",
     "key3:",
@@ -45,8 +51,26 @@ CL_END = [
     "	skey2:",
     "		sskey1: value1",
     "		sskey2: value2",
-    f"[ttry] Exception caught match expected ('check_log ko, too many warnings ({N_W} warnings)')",
-    "Expression matched: Log file initialised (*)",
-    "check_log TEST_NAME...",
-    "check_log TEST_NAME ok",
+]
+
+ERR_HANDLING = [
+    "Warning: the following message couldn't be logged because of [Errno 22] Invalid argument: ':.:.': * - test error handling normal 1",
+    "Warning: the following message couldn't be logged because of [Errno 22] Invalid argument: ':.:.': * - test error handling normal 2",
+    "* - test error handling normal 3",
+]
+ERR_HANDLING_NOT = [
+    "test error handling max limit",
+]
+
+END_1 = [
+    "check_log LOG_FILE ok",
+    "check_log WARN ok",
+    "check_log LOG_INPUT ok",
+    "check_log UPDATE_LOGS ok",
+]
+END_2 = [
+    "check_log LEVEL_WARN_ERR ok",
+    "check_log STEP_LOG ok",
+    "check_log LOG_DICT ok",
+    "check_log ERR_HANDLING ok",
 ]
