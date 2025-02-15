@@ -91,5 +91,5 @@ So for example, if you input ``step=500`` and don't input any ``what`` value, yo
     19:45:04 - 500 lines written in 2 ms. 1 000 lines written in total.
     19:45:04 - 500 lines written in 2 ms. 1 500 lines written in total.
  
-Checkout the __test_logging.py__ file in __tests/logging__ for simple examples of use.
+Checnokut the __test_logging.py__ file in __tests/logging__ for simple examples of use.
  

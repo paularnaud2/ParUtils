@@ -23,7 +23,7 @@ def t_log_file():
 
 def t_warn():
     with pytest.warns(UserWarning):  # disables the warnings
-        u.check_log(cl.LOG_FILE_NOT, cl.LOG_FILE, max_warn=10)
+        u.check_log(cl.LOG_FILE_NOT, cl.LOG_FILE, name='LOG_FILE', max_warn=10)
     u.check_log(cl.WARN, name='WARN')
     u.log_print()
 
@@ -52,8 +52,8 @@ def t_level_warn_err():
     u.log("This won't be logged in a file\n", level=1)
     u.log_print("This won't be logged in a file\n", level=1)
     with pytest.warns(UserWarning):
-        e_ref = f"check_log ko, too many warnings ({cl.N_W} warnings)"
-        u.ttry(u.check_log, e_ref, cl.LOG_FILE_NOT, cl.LOG_FILE)
+        e_ref = f"check_log LOG_FILE nok, too many warnings ({cl.N_W} warnings)"
+        u.ttry(u.check_log, e_ref, cl.LOG_FILE_NOT, cl.LOG_FILE, name='LOG_FILE')
     u.check_log(cl.LEVEL_WARN_ERR, name='LEVEL_WARN_ERR')
     u.log_print()
 

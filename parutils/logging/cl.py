@@ -65,8 +65,8 @@ def check_warn(n_w, max_warn, name):
     if n_w == 0:
         log(f'check_log{s} ok')
     elif n_w <= max_warn:
-        log(f'check_log ended with {n_w} warnings')
+        log(f'check_log{s} ended with {n_w} warnings')
     else:
-        s = f'check_log ko, too many warnings ({n_w} warnings)'
+        s = f'check_log{s} nok, too many warnings ({n_w} warnings)'
         log(s)
         raise Exception(s)

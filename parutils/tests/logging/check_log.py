@@ -18,10 +18,10 @@ WARNINGS = [
     "Expression 'ParUtils version: *' was found in log file",
     "Expression 'This will be logged in a file' was found in log file",
 ]
-WARN = WARNINGS + [f"check_log ended with {N_W} warnings"]
+WARN = WARNINGS + [f"check_log LOG_FILE ended with {N_W} warnings"]
 LEVEL_WARN_ERR = WARNINGS + [
-    f"check_log ko, too many warnings ({N_W} warnings)",
-    f"[ttry] Exception caught match expected ('check_log ko, too many warnings ({N_W} warnings)')",
+    f"check_log LOG_FILE nok, too many warnings ({N_W} warnings)",
+    f"[ttry] Exception caught match expected ('check_log LOG_FILE nok, too many warnings ({N_W} warnings)')",
 ]
 
 LOG_INPUT = [
