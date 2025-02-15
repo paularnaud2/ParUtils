@@ -1,4 +1,4 @@
-import conftest
+import parutils.tests.conftest as conftest
 import parutils as u
 
 FILES_DIR = 'tests\\files'
@@ -30,6 +30,6 @@ def test_dq():
 
 
 if __name__ == '__main__':
-    from conftest import init
+    from parutils.tests.conftest import init
     init()
     test_dq()

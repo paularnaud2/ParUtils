@@ -1,5 +1,8 @@
-__VERSION__ = '1.2.0'
-# logging - error handling
+__VERSION__ = '1.2.1'
+# log_dict - only one log_print -> better perfs
+
+# __VERSION__ = '1.2.0'
+# # logging - error handling
 
 # __VERSION__ = '1.1.9'
 # # check_log - name appears when check_log ok

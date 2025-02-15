@@ -1,7 +1,7 @@
 import pytest
 import parutils as u
 from parutils.logging import const
-from tests.logging import check_log as cl
+from parutils.tests.logging import check_log as cl
 
 
 def t_log_file():
@@ -136,7 +136,7 @@ def mock_input(txt):
 
 
 if __name__ == '__main__':
-    from conftest import init
+    from parutils.tests.conftest import init
     from _pytest.monkeypatch import MonkeyPatch
 
     init()

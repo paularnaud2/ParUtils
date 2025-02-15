@@ -52,7 +52,7 @@ class Logger:
         s = (f"Log file initialised ({self.log_path})\n"
              f"CWD: {os.getcwd()}\n"
              f"Python interpreter path: {sys.executable}\n"
-             f"Python version: {sys.version }\n"
+             f"Python version: {sys.version}\n"
              f"ParUtils version: {u.__VERSION__}\n")
         self.log_print(s)
         g.logger = self
@@ -72,7 +72,7 @@ class Logger:
         s = f"{fdate}{msg}"
         self.log_print(s, c_out=c_out)
 
-    def log_print(self, *args, level=0, c_out=True, nb_tab=0, dashes=0, tab_char='    '):
+    def log_print(self, *args, level=0, c_out=True, nb_tab=0, dashes=0, tab_char='    ', str_out=False):
         if self.level < level:
             return
 
@@ -85,6 +85,8 @@ class Logger:
         if dashes > 0:
             s = u.extend_str(s, '-', dashes)
 
+        if str_out:
+            return s + '\n'
         with lock:
             self._write_log(s, c_out)
 

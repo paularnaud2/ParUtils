@@ -69,6 +69,6 @@ def test_string():
 
 
 if __name__ == '__main__':
-    from conftest import init
+    from parutils.tests.conftest import init
     init()
     test_string()
