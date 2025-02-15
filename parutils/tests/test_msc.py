@@ -25,5 +25,5 @@ def ok_func():
     pass
 
 
-if __name__ == '__main__':
+if __name__ == '__main__':  # pragma: no cover
     test_msc()

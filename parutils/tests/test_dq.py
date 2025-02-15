@@ -1,7 +1,7 @@
 import parutils.tests.conftest as conftest
 import parutils as u
 
-FILES_DIR = 'tests\\files'
+FILES_DIR = 'parutils\\tests\\files'
 OUT_DIR = conftest.TESTS_OUT_DIR
 DUP_IN = FILES_DIR + '\\dup_in.csv'
 DUP_OUT = OUT_DIR + '\\out_dup.csv'
@@ -29,7 +29,7 @@ def test_dq():
     u.close_logger()
 
 
-if __name__ == '__main__':
+if __name__ == '__main__':  # pragma: no cover
     from parutils.tests.conftest import init
     init()
     test_dq()

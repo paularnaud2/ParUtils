@@ -1,3 +1,3 @@
-coverage run --include="parutils\*" -m pytest
+coverage run --include="parutils\*" -m pytest parutils\tests
 coverage report
 coverage html

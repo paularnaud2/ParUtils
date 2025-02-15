@@ -1,5 +1,5 @@
 import parutils as u
-from tests.string.check_log import CL
+from parutils.tests.string.check_log import CL
 
 
 def get_duration():
@@ -68,7 +68,7 @@ def test_string():
     u.close_logger()
 
 
-if __name__ == '__main__':
+if __name__ == '__main__':  # pragma: no cover
     from parutils.tests.conftest import init
     init()
     test_string()

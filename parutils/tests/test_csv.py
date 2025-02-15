@@ -1,8 +1,8 @@
 import parutils as u
 
-IN1_PATH = 'tests\\files\\in1.csv'
-IN3_PATH = 'tests\\files\\in3.csv'
-OUT_PATH = 'tests\\files\\out.csv'
+IN1_PATH = 'parutils\\tests\\files\\in1.csv'
+IN3_PATH = 'parutils\\tests\\files\\in3.csv'
+OUT_PATH = 'parutils\\tests\\files\\out.csv'
 
 
 def test_csv():
@@ -23,5 +23,5 @@ def test_csv():
     u.ttry(u.save_csv, e_ref, ['1'], OUT_PATH)
 
 
-if __name__ == '__main__':
+if __name__ == '__main__':  # pragma: no cover
     test_csv()

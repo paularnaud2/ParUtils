@@ -135,7 +135,7 @@ def mock_input(txt):
     return out
 
 
-if __name__ == '__main__':
+if __name__ == '__main__':  # pragma: no cover
     from parutils.tests.conftest import init
     from _pytest.monkeypatch import MonkeyPatch
 
