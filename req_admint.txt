@@ -1,3 +1,5 @@
 flake8
 wheel
 pytest
+twine
+setuptools
