@@ -21,6 +21,7 @@ class Logger:
         file_write=True,
         dir=None,
         file_format=None,
+        log_every=1,
     ) -> None:
         from . import g
 
@@ -35,9 +36,13 @@ class Logger:
         self.log_format = log_format if log_format else const.DEFAULT_LOG_FORMAT
         self.file_write = file_write
         self.start_time = time()
+
+        self.log_every = log_every
+        self.log_every_counter = 0
+        self.log_every_buffer = ''
+
         if not file_write:
             return
-
         self.file_label = file_label
         self.dir = dir if dir else const.DEFAULT_DIR
         self.file_format = file_format if file_format else const.DEFAULT_FILE_FORMAT
@@ -57,9 +62,13 @@ class Logger:
         self.log_print(s)
         g.logger = self
 
-    @staticmethod
-    def close():
+    def close(self):
         from . import g
+        if self.log_every_buffer:
+            self.log_every = 1
+            self.log_every_counter = 0
+            self._write_log(self.log_every_buffer, c_out=False)
+            self.log_every_buffer = ''
         g.logger = None
 
     def log(self, *args, level=0, c_out=True):
@@ -87,6 +96,22 @@ class Logger:
 
         if str_out:
             return s + '\n'
+
+        if self.log_every > 1:
+            self.log_every_counter += 1
+            if self.log_every_counter % self.log_every == 0:
+                self._write_log(self.log_every_buffer + s, c_out=False)
+                if c_out:
+                    print(s)
+                self.log_every_buffer = ''
+                self.log_every_counter = 0
+                return
+            else:
+                self.log_every_buffer += s + '\n'
+                if c_out:
+                    print(s)
+                return
+
         with lock:
             self._write_log(s, c_out)
 
