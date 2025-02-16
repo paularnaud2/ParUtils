@@ -1,6 +1,7 @@
 __VERSION__ = '1.2.1'
 # log_dict + log_array - only one log_print -> better perfs
 # Improved check_log logs - name appears when nok
+# log_every
 
 # __VERSION__ = '1.2.0'
 # # logging - error handling
