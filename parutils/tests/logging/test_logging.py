@@ -4,6 +4,37 @@ from parutils.logging import const
 from parutils.tests.logging import check_log as cl
 
 
+def t_log_every():
+    u.g.logs = []
+    u.close_logger()
+    u.Logger('TEST_LOG_EVERY', log_every=4)
+    u.log("log_elt_1")
+    assert u.g.logs == []
+    u.check_log(in_list_not=["log_elt_1"], name='LOG_EVERY_1')
+
+    u.log("log_elt_2")
+    u.log("log_elt_3")
+    u.log("log_elt_4")
+    u.check_log(["log_elt_1", "log_elt_2", "log_elt_3", "log_elt_4", 'check_log LOG_EVERY_1 ok'])
+    assert len(u.g.logs) == 2
+
+    u.log("log_elt_5")
+    logs_txt = u.load_txt(u.get_logger().log_path, False)
+    assert "log_elt_5" not in logs_txt
+    assert len(u.g.logs) == 2
+
+    log_path = u.get_logger().log_path
+    logs = u.load_txt(log_path)
+    assert len(logs) == 13 
+    u.close_logger()
+    logs = u.load_txt(log_path)
+    assert len(logs) == 16 
+    logs_txt = u.load_txt(log_path, False)
+    assert "log_elt_5" in logs_txt
+    assert len(u.g.logs) == 3
+    u.log_print()
+
+
 def t_log_file():
     u.g.logs = []
     u.close_logger()
@@ -111,6 +142,7 @@ def t_err_handling():
 
 
 def test_logging(monkeypatch):
+    t_log_every()
     t_log_file()
     t_warn()
     t_input(monkeypatch)
