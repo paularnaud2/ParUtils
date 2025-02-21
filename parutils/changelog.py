@@ -1,5 +1,6 @@
 __VERSION__ = '1.2.3'
 # close_logger returns the closed logger object
+# no more stip('\n') in save_list
 
 # __VERSION__ = '1.2.2'
 # # log_every

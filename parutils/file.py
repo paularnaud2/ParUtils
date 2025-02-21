@@ -90,7 +90,7 @@ def save_list(in_list, out_path, mode='w'):
     mkdirs(p.dirname(out_path))
     with open(out_path, mode, encoding='utf-8') as out_file:
         for elt in in_list:
-            s = str(elt).strip('\n') + '\n'
+            s = str(elt) + '\n'
             out_file.write(s)
 
 
