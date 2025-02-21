@@ -1,5 +1,8 @@
-__VERSION__ = '1.2.2'
-# log_every
+__VERSION__ = '1.2.3'
+# close_logger returns the closed logger object
+
+# __VERSION__ = '1.2.2'
+# # log_every
 
 # __VERSION__ = '1.2.1'
 # # log_dict + log_array - only one log_print -> better perfs

@@ -22,7 +22,7 @@ def set_logger(logger):
 def close_logger():
 
     if g.logger:
-        g.logger.close()
+        return g.logger.close()
 
 
 def logger_methode(func):

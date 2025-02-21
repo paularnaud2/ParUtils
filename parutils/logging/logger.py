@@ -70,6 +70,7 @@ class Logger:
             self._write_log(self.log_every_buffer, c_out=False)
             self.log_every_buffer = ''
         g.logger = None
+        return self
 
     def log(self, *args, level=0, c_out=True):
         if self.level < level:
