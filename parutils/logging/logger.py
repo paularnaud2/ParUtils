@@ -113,6 +113,8 @@ class Logger:
             self._write_log(s, c_out)
 
     def empty_log_every_buffer(self, s='', c_out=True):
+        if not self.log_every_buffer:
+            return
         self._write_log(self.log_every_buffer + s, c_out=False)
         if c_out:
             print(s)

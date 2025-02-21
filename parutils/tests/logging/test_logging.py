@@ -48,6 +48,7 @@ def t_log_file():
     u.Logger()
     u.set_logger(u.get_logger())
     u.log("This will be logged", "in a file\n")
+    u.get_logger().empty_log_every_buffer()
     u.check_log(cl.LOG_FILE, cl.LOG_FILE_NOT, log_matches=True, name='LOG_FILE')
     u.check_log(["Expression matched: Log file initialised (*)"], name='LOG_MTACHES')
     u.log_print()
