@@ -101,11 +101,7 @@ class Logger:
         if self.log_every > 1:
             self.log_every_counter += 1
             if self.log_every_counter % self.log_every == 0:
-                self._write_log(self.log_every_buffer + s, c_out=False)
-                if c_out:
-                    print(s)
-                self.log_every_buffer = ''
-                self.log_every_counter = 0
+                self.empty_log_every_buffer(s, c_out)
                 return
             else:
                 self.log_every_buffer += s + '\n'
@@ -115,6 +111,13 @@ class Logger:
 
         with lock:
             self._write_log(s, c_out)
+
+    def empty_log_every_buffer(self, s='', c_out=True):
+        self._write_log(self.log_every_buffer + s, c_out=False)
+        if c_out:
+            print(s)
+        self.log_every_buffer = ''
+        self.log_every_counter = 0
 
     def _write_log(self, str_in, c_out):
         s = str(str_in)
