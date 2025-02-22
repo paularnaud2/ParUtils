@@ -1,7 +1,12 @@
-__VERSION__ = '1.2.3'
-# close_logger returns the closed logger object
-# no more stip('\n') in save_list
-# empty_log_every_buffer
+__VERSION__ = '1.2.4_'
+# !dir -> log_dir
+# const to default kwargs
+# Logger kwargs comments
+
+# __VERSION__ = '1.2.3'
+# # close_logger returns the closed logger object
+# # no more stip('\n') in save_list
+# # empty_log_every_buffer
 
 # __VERSION__ = '1.2.2'
 # # log_every

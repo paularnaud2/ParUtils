@@ -19,7 +19,7 @@ class Logger:
         level=0,
         log_format='%H:%M:%S - ',
         file_write=True,  # Logs are written in a file or not
-        dir=None,  # Directory where the log file is saved (default is 'log')
+        log_dir=None,  # Directory where the log file is saved (default is 'log')
         file_format='%Y%m%d_%H%M%S',
         log_every=1,  # If equals to n, the log file will be written only every n logs. That can significantly improve perfs when writing logs to high latency places (eg. network drives)
     ) -> None:
@@ -44,7 +44,7 @@ class Logger:
         if not file_write:
             return
         self.file_label = file_label
-        self.dir = dir if dir else const.DEFAULT_DIR
+        self.dir = log_dir if log_dir else const.DEFAULT_DIR
         self.file_format = file_format
         file_base_name = datetime.now().strftime(self.file_format)
         if self.file_label:
