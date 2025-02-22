@@ -16,12 +16,12 @@ class Logger:
         self,
         file_label='',
         force_new_logger=False,
-        level=None,
-        log_format=None,
-        file_write=True,
-        dir=None,
-        file_format=None,
-        log_every=1,
+        level=0,
+        log_format='%H:%M:%S - ',
+        file_write=True,  # Logs are written in a file or not
+        dir=None,  # Directory where the log file is saved (default is 'log')
+        file_format='%Y%m%d_%H%M%S',
+        log_every=1,  # If equals to n, the log file will be written only every n logs. That can significantly improve perfs when writing logs to high latency places (eg. network drives)
     ) -> None:
         from . import g
 
@@ -32,8 +32,8 @@ class Logger:
         self.logs = []
         self.buffer = ''
         self.err_count = 0
-        self.level = level if level else const.DEFAULT_LEVEL
-        self.log_format = log_format if log_format else const.DEFAULT_LOG_FORMAT
+        self.level = level
+        self.log_format = log_format
         self.file_write = file_write
         self.start_time = time()
 
@@ -45,7 +45,7 @@ class Logger:
             return
         self.file_label = file_label
         self.dir = dir if dir else const.DEFAULT_DIR
-        self.file_format = file_format if file_format else const.DEFAULT_FILE_FORMAT
+        self.file_format = file_format
         file_base_name = datetime.now().strftime(self.file_format)
         if self.file_label:
             file_base_name += '_' + self.file_label
