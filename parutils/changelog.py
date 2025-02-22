@@ -1,4 +1,4 @@
-__VERSION__ = '1.2.4_'
+__VERSION__ = '1.2.4'
 # !dir -> log_dir
 # const to default kwargs
 # Logger kwargs comments
