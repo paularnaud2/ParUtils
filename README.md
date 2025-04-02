@@ -61,8 +61,9 @@ Data quality features:
 - `del_dup_list`: removes duplicates from a list
 
  
-### Logging with parutils
+## Logging with parutils
  
+### Basic usage guide
 The `log` function and the `Logger` class are directly available from the parutils package. So you can do:
 
     import parutils as u
@@ -83,6 +84,7 @@ Note that the default constants for the logging sub package are stored in __paru
 
     u.logging.const.DEFAULT_DIR = '<my_custom_dir>'
  
+### About the step_log function
 The `step_log` function allows you to log some information only when the input ``counter`` is a multiple of the input ``step``. Thus, `step_log` is to be used in loops to __track the progress of long processes__ such as reading or writing millions of lines in a file. The ``what`` input expects a description of what is being counted. It's default value is ``'lines written'``.  
 In order to correctly measure the elapsed time for the first log line, the ``step_log`` function has to be initialised by running ``init_sl_timer()``.  
 So for example, if you input ``step=500`` and don't input any ``what`` value, you should get something like this:
@@ -93,3 +95,14 @@ So for example, if you input ``step=500`` and don't input any ``what`` value, yo
  
 Checkout the __test_logging.py__ file in __tests/logging__ for simple examples of use.
  
+ ### About the retry mechanism
+ If the logger is initialized, the log information is written in a file each time you call the log function. This file writing can fail, especially if your log file is located on a network drive.
+
+ Parutils has a built-in retry mechanism related to log file writing failures. Here is how it works:  
+ Whenever writing some log fails, a warning is printed, looking like this
+
+    Warning: the following message couldn't be logged because of <error>: <logged message>
+This warning is stored in a buffer and the logger will try to log this buffer to the log file next time it has something to log. If the next try also fails, another warning is printed and added to the buffer, etc, up to a certain limit. When the size of the buffer exceeds 10, the logger stops trying to log into a file, and just prints the logs in the currently available console.
+
+### About the log_every argument
+Because each logged message implies opening a file, writing to this file, and closing the file, logging can severely affect performance, especially when logging to some network locations, or more generally to a slow drive. The `log_every` argument of the Logger constructor allows to mitigate this by logging to the file only every <log_every> log messages, using a buffer mechanism. By default, log_every is set to one, so the log file is writing for every log messages. For example, if you set log_every to 10, the log file is only written every 10 log entries, while every log entry will still be printed live on the console.
