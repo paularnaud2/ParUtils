@@ -2,7 +2,7 @@ from typing import List
 
 
 def list_to_dict(list_in: List[str], separator='='):
-    """Transforms 'list_in' to a dictionary using the 'separator'"""
+    """Transforms 'list_in' into a dictionary using the 'separator'"""
 
     out = {}
     for elt in list_in:
@@ -14,8 +14,8 @@ def list_to_dict(list_in: List[str], separator='='):
 
 
 def replace_from_dict(str_in: str, dict_in, var_del='@@'):
-    """Replaces the variables (delimited by '@@') in 'str_in' with the values
-    of 'dict_in'.
+    """Replaces the variables (delimited by '@@') in 'str_in' with values
+    from 'dict_in'.
 
     Example:
     - replace_from_dict('Hello @@VAR@@', {'VAR': 'world'}) returns 'Hello world'

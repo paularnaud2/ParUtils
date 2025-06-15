@@ -74,7 +74,7 @@ def like_dict(in_str, like_dict, case_sensitive=True, skey='', exact=False):
 
 
 def hash512(in_str: str, length=10):
-    """Contrary to hash, this hash function is not randomised, meaning it
+    """Contrary to hash, this hash function is not randomized, meaning it
     always outputs the same string for the same input string"""
     import hashlib
 
@@ -147,7 +147,7 @@ def get_duration_string(start_time, return_dms=False, end_time=None):
 
 
 def big_number(int_in):
-    """Converts a potentially big number into a lisible string.
+    """Converts a potentially big number into a readable string.
 
     Example:
     - big_number(10000000) returns '10 000 000'.

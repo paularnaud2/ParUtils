@@ -1,11 +1,15 @@
-__VERSION__ = '1.2.4'
-# !dir -> log_dir
-# const to default kwargs
-# Logger kwargs comments
+__VERSION__ = '1.2.5'
+# Faster file.load_txt
+# Corrected comment typos
+
+# __VERSION__ = '1.2.4'
+# # !dir -> log_dir
+# # const to default kwargs
+# # Logger kwargs comments
 
 # __VERSION__ = '1.2.3'
 # # close_logger returns the closed logger object
-# # no more stip('\n') in save_list
+# # no more strip('\n') in save_list
 # # empty_log_every_buffer
 
 # __VERSION__ = '1.2.2'

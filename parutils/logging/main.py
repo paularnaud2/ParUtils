@@ -6,7 +6,7 @@ def log(*args, level=0, c_out=True):
     """Logs 'str_in' in the current log file (log_path)
 
     - level: log level. Current log level is the attribute level of the current logger.
-    You can get the current loger by using the get_logger function. Nothing is logged if logger level < level
+    You can get the current logger by using the get_logger function. Nothing is logged if logger level < level
     - c_out: specifies if something should be printed in the console or not
     """
 
@@ -16,7 +16,7 @@ def log_print(*args, level=0, c_out=True, nb_tab=0, dashes=0, tab_char='    ', s
     """Prints something in the current log file (log_path)
 
     - level: log level. Current log level is the attribute level of the current logger.
-    You can get the current loger by using the get_logger function. Nothing is logged if logger level < level
+    You can get the current logger by using the get_logger function. Nothing is logged if logger level < level
     - c_out: specifies if something should be printed in the console or not
     - nb_tab: number of tab indentations
     - dashes: total length of the input string extended with dashes ('-')
