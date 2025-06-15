@@ -15,7 +15,7 @@ def delete_folder(dir):
 
 
 def mkdirs(dir, delete=False):
-    """Same as os.makedirs but
+    """Same as os.makedirs but:
     - Input can also be a path
     - With a 'delete' option which (if True) deletes the folder if it already exists."""
 
@@ -38,7 +38,7 @@ def list_files(in_dir,
                ignore_list=[]):
     """Lists the files of the 'in_dir' directory
 
-    - incl_root: if True, the root directory is included in each paths
+    - incl_root: if True, the root directory is included in each path
     - walk: if True, the files of all the subdirectories are listed as well
     - only_list: list of wanted patterns. e.g. ['*.py'] (only these patterns will be output)
     - ignore_list: list of unwanted patterns. e.g. ['*.pyc'] (these patterns won't be output)
@@ -66,22 +66,16 @@ def list_files(in_dir,
 def load_txt(in_path, list_out=True):
     """Loads a text file
 
-    - list_out: if True, a list es output, each element representing a line a the file. If False, a string is output.
+    - list_out: if True, a list is output, each element representing a line of the file. If False, a string is output.
     """
 
+    with open(in_path, 'r', encoding='utf-8') as f:
+        data = f.read()
+
     if list_out:
-        out = []
+        return data.split('\n')
     else:
-        out = ''
-
-    with open(in_path, 'r', encoding='utf-8') as in_file:
-        for line in in_file:
-            if list_out:
-                out.append(line.strip('\n'))
-            else:
-                out += line
-
-    return out
+        return data
 
 
 def save_list(in_list, out_path, mode='w'):
