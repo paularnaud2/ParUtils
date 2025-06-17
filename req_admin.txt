@@ -1,6 +1,5 @@
 flake8
 pytest
 coverage
-wheel
 twine
-setuptools
+build

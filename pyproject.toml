@@ -1,0 +1,24 @@
+[build-system]
+requires = ["setuptools"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "ParUtils"
+dynamic = ["version"]
+authors = [
+    { name="Paul ARNAUD", email="paularnaud2@gmail.com" }
+]
+description = "This package contains a bunch of Python utilities developed for Support, Test and Automation IT Engineers"
+readme = "README.md"
+requires-python = ">=3.8"
+classifiers = [
+    "Programming Language :: Python :: 3",
+    "Operating System :: OS Independent"
+]
+
+[project.urls]
+Homepage = "https://github.com/paularnaud2/ParUtils"
+Issues = "https://github.com/paularnaud2/ParUtils/issues"
+
+[tool.setuptools.dynamic]
+version = {attr = "parutils.__VERSION__"}
