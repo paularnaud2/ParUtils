@@ -22,3 +22,6 @@ Issues = "https://github.com/paularnaud2/ParUtils/issues"
 
 [tool.setuptools.dynamic]
 version = {attr = "parutils.__VERSION__"}
+
+[tool.setuptools.packages.find]
+include = ["parutils"]
