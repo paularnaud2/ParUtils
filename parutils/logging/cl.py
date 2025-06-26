@@ -1,10 +1,10 @@
 import warnings
 import parutils as u
 
-from . import Logger
-from .main import log
-from .main import log_print
-from .core import get_logger
+from parutils.logging import Logger
+from parutils.logging.main import log
+from parutils.logging.main import log_print
+from parutils.logging.core import get_logger
 
 
 def check_log(in_list=[], in_list_not=[], log_matches=False, max_warn=0, name=''):

@@ -1,4 +1,4 @@
-from .core import logger_methode
+from parutils.logging.core import logger_methode
 
 
 @logger_methode

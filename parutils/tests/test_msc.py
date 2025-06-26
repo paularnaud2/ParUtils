@@ -16,6 +16,16 @@ def test_msc():
     u.ttry(u.ttry, err, nok_func, 'test_error_1')
     u.ttry(u.ttry, "[ttry] No exception was caught", ok_func, 'test_error')
 
+    with u.Wtry('test_error'):
+        nok_func()
+    with u.Wtry("[Wtry] No exception was caught"):
+        with u.Wtry('test_error'):
+            ok_func()
+    err = "[Wtry] Exception caught ('test_error') don't match expected ('test_error_1')"
+    with u.Wtry(err):
+        with u.Wtry('test_error_1'):
+            nok_func()
+
 
 def nok_func():
     raise Exception('test_error')
