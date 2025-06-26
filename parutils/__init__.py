@@ -52,3 +52,4 @@ from .dq import del_dup_list
 from .dq import find_dup_list
 
 from .testing import ttry
+from .testing import Wtry
