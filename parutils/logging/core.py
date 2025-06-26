@@ -1,7 +1,7 @@
 from functools import wraps
 
-from parutils.logging import g
-from parutils.logging.logger import Logger
+from . import g
+from .logger import Logger
 
 
 def get_logger() -> Logger:

@@ -2,8 +2,8 @@ from time import time
 from parutils import strg
 from threading import RLock
 
-from parutils.logging.main import log
-from parutils.logging.core import get_logger
+from .main import log
+from .core import get_logger
 
 lock = RLock()
 sl_time_dict = {}

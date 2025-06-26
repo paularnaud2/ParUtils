@@ -1,3 +1,3 @@
-from parutils.logging import Logger
+from . import Logger
 
 logger: Logger = None

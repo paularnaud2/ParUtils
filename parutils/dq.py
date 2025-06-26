@@ -1,7 +1,7 @@
 import os.path as p
 import parutils as u
 
-from parutils import wrap
+from . import wrap
 
 OUT_DIR = 'out'
 

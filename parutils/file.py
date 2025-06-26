@@ -2,8 +2,8 @@ import os
 import os.path as p
 from shutil import rmtree
 
-from parutils.logging import log
-from parutils.strg import like_list
+from .logging import log
+from .strg import like_list
 
 
 def delete_folder(dir):

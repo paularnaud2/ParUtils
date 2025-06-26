@@ -1,7 +1,7 @@
 import csv
 from io import TextIOWrapper
 
-from parutils import file
+from . import file
 
 SEPARATOR = ';'
 E_WRONG_TYPE_LIST = "List elements must be of type list (if you want to save a list of strings, please use the save_list function)"

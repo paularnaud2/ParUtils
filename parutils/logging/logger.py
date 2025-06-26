@@ -6,7 +6,7 @@ from time import time
 from threading import RLock
 from datetime import datetime
 
-from parutils.logging import const
+from . import const
 
 lock = RLock()
 
@@ -23,7 +23,7 @@ class Logger:
         file_format='%Y%m%d_%H%M%S',
         log_every=1,  # If equals to n, the log file will be written only every n logs. That can significantly improve perfs when writing logs to high latency places (eg. network drives)
     ) -> None:
-        from parutils.logging import g
+        from . import g
 
         if g.logger and g.logger.file_write and not force_new_logger:
             self = g.logger
@@ -63,7 +63,7 @@ class Logger:
         g.logger = self
 
     def close(self):
-        from parutils.logging import g
+        from . import g
         if self.log_every_buffer:
             self.log_every = 1
             self.log_every_counter = 0

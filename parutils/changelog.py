@@ -1,10 +1,6 @@
-__VERSION__ = '1.2.6'
-# Wtry context manager
-
-# __VERSION__ = '1.2.5'
-# # Faster file.load_txt
-# # Corrected comment typos
-# # pyproject.toml
+__VERSION__ = '1.2.5'
+# Faster file.load_txt
+# Corrected comment typos
 
 # __VERSION__ = '1.2.4'
 # # !dir -> log_dir
