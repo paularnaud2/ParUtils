@@ -7,38 +7,6 @@ SEPARATOR = ';'
 E_WRONG_TYPE_LIST = "List elements must be of type list (if you want to save a list of strings, please use the save_list function)"
 
 
-def read_excel_csv(path):
-    array = []
-    with open(path) as csvfile:
-        spamreader = csv.reader(csvfile, dialect='excel')
-        for row in spamreader:
-            array.append(row)
-    array[0][0] = array[0][0].replace('\ufeff', '')
-    header: list = array[0]
-    del array[0]
-    lst_of_dict = []
-    for row in array:
-        d = {k: row[i] for i, k in enumerate(header)}
-        lst_of_dict.append(d)
-    print(f"CSV file successfully loaded from {path}")
-    return lst_of_dict, header
-
-
-def write_excel_csv(path, lst_of_dict, header):
-    with open(path, 'w', newline='') as csvfile:
-        spamwriter = csv.writer(csvfile, dialect='excel')
-        spamwriter.writerow(header)
-        for t in lst_of_dict:
-            row = []
-            for field in header:
-                val = str(t[field]) if field in t else ''
-                if len(val) > 1 and val[0] == '-':
-                    val = " " + val  # prevents excel from interpreting as int
-                row.append(val)
-            spamwriter.writerow(row)
-    print(f"CSV file successfully saved to {path}")
-
-
 def get_csv_fields_dict(in_path):
     """Returns a dictionary whose keys are the CSV fields of the 'in_path' file
     and elements are the columns index.
