@@ -166,6 +166,15 @@ def big_number(int_in):
     return (out)
 
 
-def truncate(s, length=100):
-    out = s[0:length - 3] + '...' if len(s) > length else s
-    return out
+def truncate(in_str: str, max_length=100, middle=True) -> str:
+    s = str(in_str)
+    if len(s) <= max(max_length, 5):
+        return s
+    if not middle:
+        return s[0:max_length - 3] + '...'
+
+    part_length = (max_length - 5) // 2
+    # If max_length - 3 is odd, the front will be longer
+    front = s[:part_length + (max_length - 5) % 2]
+    back = s[-part_length:]
+    return front + '[...]' + back

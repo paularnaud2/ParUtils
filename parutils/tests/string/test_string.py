@@ -61,7 +61,9 @@ def test_string():
 
     u.Logger('TEST_STRING', True)
     assert u.big_number(1000) == '1 000'
-    assert u.truncate('test_test', 4) == 't...'
+    assert u.truncate('test_test', 10) == 'test_test'
+    assert u.truncate('test_test', 7) == 't[...]t'
+    assert u.truncate('test_test', 7, False) == 'test...'
     get_duration()
     like()
     u.check_log(CL)
