@@ -36,13 +36,13 @@ def load_csv(in_path, quote=False):
                 out_list.append(row)
         else:
             for line in in_file:
-                line_list = _csv_to_list(line)
+                line_list = csv_to_list(line)
                 out_list.append(line_list)
 
     return out_list
 
 
-def _csv_to_list(line_in: str):
+def csv_to_list(line_in: str):
     """Converts a CSV line to a list using SEPARATOR as separator"""
 
     return line_in.strip('\n').split(SEPARATOR)
@@ -59,10 +59,10 @@ def save_csv(array_in, out_path, mode='w', quote=False):
     file.mkdirs(p.dirname(out_path))
     with open(out_path, mode, encoding='utf-8') as out_file:
         for row in array_in:
-            _write_csv_line(row, out_file, quote)
+            write_csv_line(row, out_file, quote)
 
 
-def _write_csv_line(row, out_file: TextIOWrapper, quote=False):
+def write_csv_line(row, out_file: TextIOWrapper, quote=False):
     """Writes a line to a CSV file
 
     - row: must be a list
@@ -77,6 +77,15 @@ def _write_csv_line(row, out_file: TextIOWrapper, quote=False):
     out_file.write(line_out)
 
 
+def csv_clean(s: str):
+    """Cleans a CSV field by removing CSV separators and new line characters"""
+
+    out = s.replace('\r', '')
+    out = out.replace('\n', '')
+    out = out.replace(SEPARATOR, '')
+    return out
+
+
 def get_header(in_path, csv=False):
     """Returns the header of a file
 
@@ -87,6 +96,6 @@ def get_header(in_path, csv=False):
         header = in_file.readline().strip('\n')
 
     if csv:
-        header = _csv_to_list(header)
+        header = csv_to_list(header)
 
     return header
