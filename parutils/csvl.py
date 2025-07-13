@@ -7,6 +7,38 @@ SEPARATOR = ';'
 E_WRONG_TYPE_LIST = "List elements must be of type list (if you want to save a list of strings, please use the save_list function)"
 
 
+def read_excel_csv(path):
+    array = []
+    with open(path) as csvfile:
+        spamreader = csv.reader(csvfile, dialect='excel')
+        for row in spamreader:
+            array.append(row)
+    array[0][0] = array[0][0].replace('\ufeff', '')
+    header: list = array[0]
+    del array[0]
+    lst_of_dict = []
+    for row in array:
+        d = {k: row[i] for i, k in enumerate(header)}
+        lst_of_dict.append(d)
+    print(f"CSV file successfully loaded from {path}")
+    return lst_of_dict, header
+
+
+def write_excel_csv(path, lst_of_dict, header):
+    with open(path, 'w', newline='') as csvfile:
+        spamwriter = csv.writer(csvfile, dialect='excel')
+        spamwriter.writerow(header)
+        for t in lst_of_dict:
+            row = []
+            for field in header:
+                val = str(t[field]) if field in t else ''
+                if len(val) > 1 and val[0] == '-':
+                    val = " " + val  # prevents excel from interpreting as int
+                row.append(val)
+            spamwriter.writerow(row)
+    print(f"CSV file successfully saved to {path}")
+
+
 def get_csv_fields_dict(in_path):
     """Returns a dictionary whose keys are the CSV fields of the 'in_path' file
     and elements are the columns index.
@@ -36,13 +68,13 @@ def load_csv(in_path, quote=False):
                 out_list.append(row)
         else:
             for line in in_file:
-                line_list = csv_to_list(line)
+                line_list = _csv_to_list(line)
                 out_list.append(line_list)
 
     return out_list
 
 
-def csv_to_list(line_in: str):
+def _csv_to_list(line_in: str):
     """Converts a CSV line to a list using SEPARATOR as separator"""
 
     return line_in.strip('\n').split(SEPARATOR)
@@ -59,10 +91,10 @@ def save_csv(array_in, out_path, mode='w', quote=False):
     file.mkdirs(p.dirname(out_path))
     with open(out_path, mode, encoding='utf-8') as out_file:
         for row in array_in:
-            write_csv_line(row, out_file, quote)
+            _write_csv_line(row, out_file, quote)
 
 
-def write_csv_line(row, out_file: TextIOWrapper, quote=False):
+def _write_csv_line(row, out_file: TextIOWrapper, quote=False):
     """Writes a line to a CSV file
 
     - row: must be a list
@@ -77,15 +109,6 @@ def write_csv_line(row, out_file: TextIOWrapper, quote=False):
     out_file.write(line_out)
 
 
-def csv_clean(s: str):
-    """Cleans a CSV field by removing CSV separators and new line characters"""
-
-    out = s.replace('\r', '')
-    out = out.replace('\n', '')
-    out = out.replace(SEPARATOR, '')
-    return out
-
-
 def get_header(in_path, csv=False):
     """Returns the header of a file
 
@@ -96,6 +119,6 @@ def get_header(in_path, csv=False):
         header = in_file.readline().strip('\n')
 
     if csv:
-        header = csv_to_list(header)
+        header = _csv_to_list(header)
 
     return header
