@@ -1,5 +1,5 @@
 __VERSION__ = '1.2.6'
-# Wtry context manager
+# Wtry context manager 
 # truncate middle by default
 
 # __VERSION__ = '1.2.5'
