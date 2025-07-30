@@ -1,3 +1,5 @@
+venv\Scripts\Activate.ps1
+
 if (Test-Path "dist") {
   Remove-Item "dist" -Recurse
 }
