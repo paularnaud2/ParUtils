@@ -1,6 +1,7 @@
 __VERSION__ = '1.2.6'
 # Wtry context manager 
 # truncate middle by default
+# file.load_txt - clean_lst
 
 # __VERSION__ = '1.2.5'
 # # Faster file.load_txt

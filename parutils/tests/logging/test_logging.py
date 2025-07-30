@@ -25,11 +25,11 @@ def t_log_every():
 
     log_path = u.get_logger().log_path
     logs = u.load_txt(log_path)
-    assert len(logs) == 14 
+    assert len(logs) == 13 
     logs0 = u.close_logger().logs
     assert "log_elt_5" in logs0[2]
     logs = u.load_txt(log_path)
-    assert len(logs) == 17 
+    assert len(logs) == 16
     logs_txt = u.load_txt(log_path, False)
     assert "log_elt_5" in logs_txt
     assert len(u.g.logs) == 3

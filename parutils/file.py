@@ -63,17 +63,21 @@ def list_files(in_dir,
     return out
 
 
-def load_txt(in_path, list_out=True):
+def load_txt(in_path, list_out=True, clean_lst=True):
     """Loads a text file
 
     - list_out: if True, a list is output, each element representing a line of the file. If False, a string is output.
+    - clean_lst: if True, the last element of the output list is deleted when void.
     """
 
     with open(in_path, 'r', encoding='utf-8') as f:
         data = f.read()
 
     if list_out:
-        return data.split('\n')
+        out = data.split('\n')
+        if out and clean_lst and out[-1] == '':
+            del out[-1]
+        return out
     else:
         return data
 
