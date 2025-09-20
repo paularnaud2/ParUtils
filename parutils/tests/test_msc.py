@@ -2,6 +2,15 @@ import parutils as u
 
 
 def test_msc():
+
+    res = u.try_bool(ok_func, 'arg1', 'arg2', kwarg1='val1', kwarg2='val2')
+    assert res[0]
+    assert res[1] == "ok: ('arg1', 'arg2'), {'kwarg1': 'val1', 'kwarg2': 'val2'}"
+
+    res = u.try_bool(nok_func_args, 'arg1', 'arg2', kwarg1='val1', kwarg2='val2')
+    assert not res[0]
+    assert str(res[1]) == "test_error: ('arg1', 'arg2'), {'kwarg1': 'val1', 'kwarg2': 'val2'}"
+
     lst = ['key1=value1', 'key2=value2']
     out = u.list_to_dict(lst)
 
@@ -31,8 +40,12 @@ def nok_func():
     raise Exception('test_error')
 
 
-def ok_func():
-    pass
+def nok_func_args(*args, **kwargs):
+    raise Exception(f'test_error: {args}, {kwargs}')
+
+
+def ok_func(*args, **kwargs):
+    return f'ok: {args}, {kwargs}'
 
 
 if __name__ == '__main__':  # pragma: no cover

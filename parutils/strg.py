@@ -78,7 +78,7 @@ def hash512(in_str: str, length=10):
     always outputs the same string for the same input string"""
     import hashlib
 
-    out = hashlib.sha512(in_str.encode('utf-8')).hexdigest()[:length]
+    out = hashlib.sha512(str(in_str).encode('utf-8')).hexdigest()[:length]
     return out
 
 

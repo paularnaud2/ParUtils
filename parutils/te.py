@@ -23,6 +23,13 @@ class Wtry:
             raise Exception(s)
 
 
+def try_bool(func, *args, **kwargs):
+    try:
+        return True, func(*args, **kwargs)
+    except Exception as e:
+        return False, e
+
+
 def ttry(f, e_ref, *args, **kwargs):
 
     exception_occured = False
