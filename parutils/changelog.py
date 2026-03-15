@@ -1,5 +1,8 @@
-__VERSION__ = '1.2.8'
-# try_bool
+__VERSION__ = '1.2.9'
+# Improved save_list
+
+# __VERSION__ = '1.2.8'
+# # try_bool
 
 # __VERSION__ = '1.2.7'
 # # file.load_txt - clean_lst
