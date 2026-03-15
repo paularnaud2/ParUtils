@@ -82,14 +82,12 @@ def load_txt(in_path, list_out=True, clean_lst=True):
         return data
 
 
-def save_list(in_list, out_path, mode='w'):
-    """Saves a list in a file, each element representing a line"""
+def save_list(in_list, out_path, mode="w"):
+    """Write a list to a file, one element per line."""
+    os.makedirs(os.path.dirname(out_path), exist_ok=True)
 
-    mkdirs(p.dirname(out_path))
-    with open(out_path, mode, encoding='utf-8') as out_file:
-        for elt in in_list:
-            s = str(elt) + '\n'
-            out_file.write(s)
+    with open(out_path, mode, encoding="utf-8") as f:
+        f.write("\n".join(map(str, in_list)))
 
 
 def count_lines(in_path):
