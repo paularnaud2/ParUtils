@@ -17,24 +17,24 @@ def t_log_every():
     u.log("log_elt_3")
     u.log("log_elt_4")
     u.check_log(["log_elt_1", "log_elt_2", "log_elt_3", "log_elt_4", 'check_log LOG_EVERY_1 ok'])
-    assert len(u.g.logs) == 2
+    assert len(u.g.logs) == 13
     u.g.test = False
 
     u.log("log_elt_5")
     logs_txt = u.load_txt(u.get_logger().log_path, False)
     assert "log_elt_5" not in logs_txt
-    assert len(u.g.logs) == 2
+    assert len(u.g.logs) == 13
 
     log_path = u.get_logger().log_path
     logs = u.load_txt(log_path)
     assert len(logs) == 13 
     logs0 = u.close_logger().logs
-    assert "log_elt_5" in logs0[2]
+    assert "log_elt_5" in logs0[14]
     logs = u.load_txt(log_path)
     assert len(logs) == 16
     logs_txt = u.load_txt(log_path, False)
     assert "log_elt_5" in logs_txt
-    assert len(u.g.logs) == 3
+    assert len(u.g.logs) == 16
     u.log_print()
 
 

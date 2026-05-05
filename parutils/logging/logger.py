@@ -135,9 +135,9 @@ class Logger:
             s = self._handle_e(str_in, e)
         self._append_and_print(s, c_out)
 
-    def _append_and_print(self, s, c_out):
-        u.g.logs.append(s)
-        self.logs.append(s)
+    def _append_and_print(self, s: str, c_out):
+        u.g.logs.extend(s.split('\n'))
+        self.logs.extend(s.split('\n'))
         if c_out:
             print(s)
 
