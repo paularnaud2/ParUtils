@@ -17,6 +17,8 @@ def check_log(in_list=[], in_list_not=[], log_matches=False, max_warn=0, name=''
     s = ' ' + name if name else ''
     log(f'check_log{s}...')
     logger = get_logger()
+    if not u.g.test:
+        logger.empty_log_every_buffer()
     txt = load_txt(logger)
 
     n_w = 0

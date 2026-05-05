@@ -5,6 +5,7 @@ from parutils.tests.logging import check_log as cl
 
 
 def t_log_every():
+    u.g.test = True
     u.g.logs = []
     u.close_logger()
     u.Logger('TEST_LOG_EVERY', log_every=4)
@@ -17,6 +18,7 @@ def t_log_every():
     u.log("log_elt_4")
     u.check_log(["log_elt_1", "log_elt_2", "log_elt_3", "log_elt_4", 'check_log LOG_EVERY_1 ok'])
     assert len(u.g.logs) == 2
+    u.g.test = False
 
     u.log("log_elt_5")
     logs_txt = u.load_txt(u.get_logger().log_path, False)
