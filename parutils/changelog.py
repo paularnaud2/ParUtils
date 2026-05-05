@@ -1,5 +1,8 @@
-__VERSION__ = '1.2.9'
-# Improved save_list
+__VERSION__ = '1.3.0'
+# Empty log buffer before check log
+
+# __VERSION__ = '1.2.9'
+# # Improved save_list
 
 # __VERSION__ = '1.2.8'
 # # try_bool
