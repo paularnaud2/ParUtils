@@ -1,5 +1,8 @@
-__VERSION__ = '1.3.2'
-# empty_log_every_buffer c_out defaults to False
+__VERSION__ = '1.3.3'
+# No more unwanted line break in log buffer
+
+# __VERSION__ = '1.3.2'
+# # empty_log_every_buffer c_out defaults to False
 
 # __VERSION__ = '1.3.1'
 # # List extend for self and global logs -> no more multi-line str elts in log_every > 1 mode
