@@ -103,11 +103,13 @@ class Logger:
             if self.log_every_counter % self.log_every == 0:
                 self.empty_log_every_buffer(s, c_out)
                 return
+            if self.log_every_buffer:
+                self.log_every_buffer += '\n' + s
             else:
-                self.log_every_buffer += s + '\n'
-                if c_out:
-                    print(s)
-                return
+                self.log_every_buffer = s
+            if c_out:
+                print(s)
+            return
 
         with lock:
             self._write_log(s, c_out)
