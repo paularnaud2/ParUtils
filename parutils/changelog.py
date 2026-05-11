@@ -1,5 +1,8 @@
-__VERSION__ = '1.3.3'
-# No more unwanted line break in log buffer
+__VERSION__ = '1.3.4'
+# Fixed bug empty_log_every_buffer
+
+# __VERSION__ = '1.3.3'
+# # No more unwanted line break in log buffer
 
 # __VERSION__ = '1.3.2'
 # # empty_log_every_buffer c_out defaults to False
