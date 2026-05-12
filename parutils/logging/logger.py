@@ -64,11 +64,7 @@ class Logger:
 
     def close(self):
         from . import g
-        if self.log_every_buffer:
-            self.log_every = 1
-            self.log_every_counter = 0
-            self._write_log(self.log_every_buffer, c_out=False)
-            self.log_every_buffer = ''
+        self.empty_log_every_buffer()
         g.logger = None
         return self
 
