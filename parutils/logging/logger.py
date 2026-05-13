@@ -100,7 +100,7 @@ class Logger:
         with lock:
             self.log_every_counter += 1
             if self.log_every_counter % self.log_every == 0:
-                self.empty_log_every_buffer(s, c_out)
+                self.empty_log_every_buffer(s, c_out, new_line=True)
                 return True
             if self.log_every_buffer:
                 self.log_every_buffer += '\n' + s
@@ -110,10 +110,10 @@ class Logger:
             print(s)
         return True
 
-    def empty_log_every_buffer(self, s='', c_out=False):
+    def empty_log_every_buffer(self, s='', c_out=False, new_line=False):
         if not self.log_every_buffer:
             return
-        suf = '\n' + s if s else ''
+        suf = '\n' + s if s or new_line else ''
         self._write_log(self.log_every_buffer + suf, c_out=False)
         if c_out:
             print(s)

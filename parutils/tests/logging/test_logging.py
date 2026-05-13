@@ -37,6 +37,20 @@ def t_log_every():
     assert len(u.g.logs) == 15
     u.log_print()
 
+    assert log_range_len(1) == 17
+    assert log_range_len(2) == 17
+    assert log_range_len(3) == 17
+    assert log_range_len(4) == 17
+
+
+def log_range_len(log_every):
+    u.Logger(log_every=log_every)
+    for i in range(10):
+        u.log(i)
+    u.log_print()
+    logs = u.load_txt(u.close_logger().log_path)
+    return len(logs)
+
 
 def t_log_file():
     u.g.logs = []
