@@ -81,34 +81,34 @@ class Logger:
     def log_print(self, *args, level=0, c_out=True, nb_tab=0, dashes=0, tab_char='    ', str_out=False):
         if self.level < level:
             return
-
         args = [str(e) for e in args]
         s = ' '.join(args)
         if nb_tab != 0:
             for i in range(0, nb_tab):
                 s = tab_char + s
-
         if dashes > 0:
             s = u.extend_str(s, '-', dashes)
-
         if str_out:
             return s + '\n'
+        if self.proc_log_every(s, c_out):
+            return
+        self._write_log(s, c_out)
 
-        if self.log_every > 1:
+    def proc_log_every(self, s, c_out):
+        if self.log_every == 1:
+            return False
+        with lock:
             self.log_every_counter += 1
             if self.log_every_counter % self.log_every == 0:
                 self.empty_log_every_buffer(s, c_out)
-                return
+                return True
             if self.log_every_buffer:
                 self.log_every_buffer += '\n' + s
             else:
                 self.log_every_buffer = s
-            if c_out:
-                print(s)
-            return
-
-        with lock:
-            self._write_log(s, c_out)
+        if c_out:
+            print(s)
+        return True
 
     def empty_log_every_buffer(self, s='', c_out=False):
         if not self.log_every_buffer:
@@ -117,22 +117,24 @@ class Logger:
         self._write_log(self.log_every_buffer + suf, c_out=False)
         if c_out:
             print(s)
-        self.log_every_buffer = ''
-        self.log_every_counter = 0
+        with lock:
+            self.log_every_buffer = ''
+            self.log_every_counter = 0
 
     def _write_log(self, str_in, c_out):
-        s = str(str_in)
-        if not self.file_write:
+        with lock:
+            s = str(str_in)
+            if not self.file_write:
+                self._append_and_print(s, c_out)
+                return
+            try:
+                with open(self.log_path, 'a', encoding='utf-8') as in_file:
+                    in_file.write(self.buffer + s + '\n')
+                self.buffer = ''
+                self.err_count = 0
+            except Exception as e:
+                s = self._handle_e(str_in, e)
             self._append_and_print(s, c_out)
-            return
-        try:
-            with open(self.log_path, 'a', encoding='utf-8') as in_file:
-                in_file.write(self.buffer + s + '\n')
-            self.buffer = ''
-            self.err_count = 0
-        except Exception as e:
-            s = self._handle_e(str_in, e)
-        self._append_and_print(s, c_out)
 
     def _append_and_print(self, s: str, c_out):
         u.g.logs.extend(s.split('\n'))
