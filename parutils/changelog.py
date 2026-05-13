@@ -1,6 +1,10 @@
 __VERSION__ = '1.3.5'
-# No line break on empty_log_every_buffer if s void
-# empty_log_every_buffer on Logger.close()
+# mkdirs pass on  FileExistsError
+# log_every thread safe
+
+# __VERSION__ = '1.3.5'
+# # No line break on empty_log_every_buffer if s void
+# # empty_log_every_buffer on Logger.close()
 
 # __VERSION__ = '1.3.4'
 # # Fixed bug empty_log_every_buffer

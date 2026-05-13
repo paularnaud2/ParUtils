@@ -26,7 +26,10 @@ def mkdirs(dir, delete=False):
         return
     if p.exists(dir) and delete:
         delete_folder(dir)
-    os.makedirs(dir)
+    try:
+        os.makedirs(dir)
+    except FileExistsError:  # pragma: no cover
+        pass
     log(f"Folder '{dir}' created")
 
 
