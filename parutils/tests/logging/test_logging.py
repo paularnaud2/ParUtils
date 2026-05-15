@@ -1,4 +1,5 @@
 import pytest
+import threading
 import parutils as u
 from parutils.logging import const
 from parutils.tests.logging import check_log as cl
@@ -41,6 +42,30 @@ def t_log_every():
     assert log_range_len(2) == 17
     assert log_range_len(3) == 17
     assert log_range_len(4) == 17
+
+
+def t_log_every_thread_safe():
+    u.Logger(log_every=3)
+    n, block_size, threads = 4, 100, []
+    for i in range(n):
+        start = i * block_size + 1
+        end = (i + 1) * block_size
+        args = (start, end)
+        t = threading.Thread(target=log_numbers, args=args)
+        threads.append(t)
+        t.start()
+
+    for t in threads:
+        t.join()
+    logs = sorted([int(e) for e in u.close_logger().logs[6:]])
+    assert logs[0] == 1
+    assert logs[-1] == n * block_size
+    assert len(logs) == n * block_size
+
+
+def log_numbers(start, end):
+    for number in range(start, end + 1):
+        u.log_print(number)
 
 
 def log_range_len(log_every):
@@ -161,6 +186,7 @@ def t_err_handling():
 
 def test_logging(monkeypatch):
     t_log_every()
+    t_log_every_thread_safe()
     t_log_file()
     t_warn()
     t_input(monkeypatch)
