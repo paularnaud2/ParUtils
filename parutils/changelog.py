@@ -1,7 +1,10 @@
-__VERSION__ = '1.3.6'
-# mkdirs pass on  FileExistsError
-# log_every thread safe (tested with t_log_every_thread_safe)
-# fixed bug no new line on log_print() for some log_every values
+__VERSION__ = '1.3.7'
+# Automatic empty_log_every_buffer on Logger init
+
+# __VERSION__ = '1.3.6'
+# # mkdirs pass on  FileExistsError
+# # log_every thread safe (tested with t_log_every_thread_safe)
+# # fixed bug no new line on log_print() for some log_every values
 
 # __VERSION__ = '1.3.5'
 # # No line break on empty_log_every_buffer if s void
