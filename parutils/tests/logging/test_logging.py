@@ -43,6 +43,14 @@ def t_log_every():
     assert log_range_len(3) == 17
     assert log_range_len(4) == 17
 
+    # Test empty log every buffer on init
+    u.Logger('TEST_LOG_EVERY_NEW1', log_every=10)
+    u.log("log_elt_1")
+    log_path = u.get_logger().log_path
+    u.Logger('TEST_LOG_EVERY_NEW2', force_new_logger=True)
+    logs_txt = u.load_txt(log_path, False)
+    assert "log_elt_1" in logs_txt
+
 
 def t_log_every_thread_safe():
     u.Logger(log_every=3)

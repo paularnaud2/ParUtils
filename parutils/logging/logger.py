@@ -28,6 +28,8 @@ class Logger:
         if g.logger and g.logger.file_write and not force_new_logger:
             self = g.logger
             return
+        elif g.logger and g.logger.file_write and force_new_logger and g.logger.log_every > 1:
+            g.logger.empty_log_every_buffer()
 
         self.logs = []
         self.buffer = ''
